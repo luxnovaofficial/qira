@@ -377,6 +377,30 @@ p {
   transform: scaleX(1);
 }
 
+.scroll-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--color-border-subtle);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-bio) 0%,
+    var(--color-accent-gold) 50%,
+    var(--color-accent-silver) 100%
+  );
+  transition: width 80ms linear;
+  will-change: width;
+}
+
 .section-container {
   width: min(100%, 80rem);
   margin: 0 auto;
@@ -610,6 +634,127 @@ p {
   border-bottom-width: 1px;
 }
 
+.path-overlay {
+  position: relative;
+  width: 100%;
+  height: 7.5rem;
+  margin-top: -3.75rem;
+  margin-bottom: -3.75rem;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.path-overlay-svg {
+  position: absolute;
+  top: -3.75rem;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 7.5rem;
+}
+
+.path-overlay--inline {
+  height: 2.5rem;
+  margin-top: var(--space-4);
+  margin-bottom: calc(var(--space-5) * -1);
+}
+
+.path-overlay--inline .path-overlay-svg {
+  position: relative;
+  top: 0;
+  height: 2.5rem;
+}
+
+.path-overlay--physician {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: clamp(2.5rem, 4vw, 3.75rem);
+  height: 100%;
+  overflow: hidden;
+}
+
+.path-overlay--physician .path-overlay-svg {
+  top: 0;
+  right: 0;
+  left: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.path-overlay-svg--codes {
+  height: 2.5rem;
+}
+
+.path-overlay-svg--process-connector {
+  height: 6.25rem;
+  top: -3.125rem;
+}
+
+.svg-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svg-path--connector {
+  stroke: var(--color-accent-bio);
+  stroke-width: 1;
+  opacity: 0.18;
+}
+
+.svg-path--connector-accent {
+  stroke: var(--color-accent-silver);
+  stroke-width: 0.5;
+  opacity: 0.12;
+}
+
+.svg-path--accent {
+  stroke: var(--color-accent-gold);
+  stroke-width: 0.8;
+  opacity: 0.22;
+}
+
+.svg-path--flow {
+  stroke: var(--color-accent-silver);
+  stroke-width: 1;
+  opacity: 0.16;
+}
+
+[data-draw-path] {
+  transition:
+    stroke-dashoffset 1800ms var(--ease-ml-quart-out),
+    opacity 600ms var(--ease-out-quart);
+  opacity: 0;
+}
+
+[data-path-progress] [data-draw-path] {
+  transition: none;
+}
+
+.path-active:not([data-path-progress]) [data-draw-path],
+.path-drawn [data-draw-path] {
+  stroke-dashoffset: 0 !important;
+  opacity: 1;
+}
+
+[data-draw-delay="100"] {
+  transition-delay: 100ms;
+}
+
+[data-draw-delay="200"] {
+  transition-delay: 200ms;
+}
+
+[data-draw-delay="300"] {
+  transition-delay: 300ms;
+}
+
+[data-draw-delay="400"] {
+  transition-delay: 400ms;
+}
+
 .hero-reveal-up {
   opacity: 0;
   animation: hero-reveal 900ms var(--ease-out-expo) both;
@@ -692,6 +837,32 @@ p {
   animation-name: section-scale-reveal;
 }
 
+[data-scene] [data-scene-order] {
+  opacity: 0;
+  transform: translate3d(0, 0.75rem, 0);
+  transition:
+    opacity var(--duration-reveal) var(--ease-ml-cubic-out),
+    transform var(--duration-reveal) var(--ease-ml-default);
+}
+
+[data-scene] [data-scene-order].scene-entered {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+[data-scene] [data-scene-order][data-reveal="heading"] {
+  clip-path: inset(0 0 40% 0);
+  transform: translate3d(0, 1rem, 0);
+}
+
+[data-scene] [data-scene-order][data-reveal="heading"].scene-entered {
+  clip-path: inset(0 0 0 0);
+  transition:
+    opacity var(--duration-emphasis) var(--ease-ml-default),
+    transform var(--duration-emphasis) var(--ease-ml-default),
+    clip-path var(--duration-emphasis) var(--ease-ml-default);
+}
+
 .strand-active .strand-node {
   animation: strand-node-pulse 760ms var(--ease-out-expo) both;
   animation-delay: var(--strand-delay, 0ms);
@@ -726,6 +897,65 @@ p {
 .strand-settled .strand-node {
   opacity: 0.24;
   transform: scale(1);
+}
+
+.process-scene {
+  --process-progress: 0;
+}
+
+.process-scroll-meter {
+  display: grid;
+  gap: var(--space-3);
+  width: min(100%, 18rem);
+  margin-top: var(--space-6);
+}
+
+.process-scroll-numbers {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.process-scroll-current,
+.process-scroll-total {
+  min-width: 2ch;
+}
+
+.process-scroll-current {
+  color: var(--color-accent-gold);
+}
+
+.process-scroll-divider {
+  width: 2rem;
+  height: 1px;
+  background: color-mix(in oklch, var(--color-accent-silver) 28%, transparent);
+}
+
+.process-scroll-track {
+  position: relative;
+  height: 1px;
+  background: color-mix(in oklch, var(--color-border-subtle) 88%, transparent);
+  overflow: hidden;
+}
+
+.process-scroll-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-bio) 0%,
+    var(--color-accent-gold) 52%,
+    var(--color-accent-silver) 100%
+  );
+  transform: scaleX(var(--process-progress, 0));
+  transform-origin: left center;
+  transition: transform 120ms linear;
 }
 
 .cta-button,
@@ -793,11 +1023,69 @@ p {
     box-shadow var(--duration-emphasis) var(--ease-ml-default);
 }
 
+.code-visual {
+  position: absolute;
+  inset: var(--space-4);
+  overflow: hidden;
+  border-radius: calc(var(--radius-large) + var(--space-1));
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--color-accent-silver) 8%, var(--color-bg-surface)) 0%,
+    color-mix(in oklch, var(--color-accent-gold) 4%, var(--color-bg-surface)) 100%
+  );
+}
+
+.code-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-emphasis) var(--ease-ml-default);
+  will-change: transform;
+}
+
+.code-card:hover .code-visual img {
+  transform: scale(1.04);
+}
+
 .code-card,
 .process-step,
 .difference-list article {
   padding: var(--space-6);
   min-height: 15rem;
+}
+
+.process-step::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--color-accent-bio) 84%, transparent) 0%,
+    color-mix(in oklch, var(--color-accent-gold) 92%, transparent) 55%,
+    color-mix(in oklch, var(--color-accent-silver) 88%, transparent) 100%
+  );
+  opacity: calc(0.12 + (var(--process-step-progress, 0) * 0.9));
+  transform: scaleX(var(--process-step-progress, 0));
+  transform-origin: left center;
+  transition:
+    opacity 120ms linear,
+    transform 120ms linear;
+}
+
+.process-step .process-index {
+  transition: color var(--duration-state) var(--ease-out-quart);
+}
+
+.process-step-current {
+  border-color: color-mix(in oklch, var(--color-accent-silver) 26%, var(--color-border));
+  box-shadow: 0 6px 28px color-mix(in oklch, var(--color-bg) 54%, transparent);
+}
+
+.process-step-current .process-index {
+  color: var(--color-accent-gold);
 }
 
 .code-card:hover,
@@ -966,6 +1254,15 @@ p {
   color: var(--color-text-secondary);
 }
 
+#physician .section-container {
+  position: relative;
+}
+
+#physician .path-overlay--physician + .grid-2 {
+  position: relative;
+  z-index: 1;
+}
+
 .difference-list {
   display: grid;
   gap: var(--space-4);
@@ -1079,6 +1376,16 @@ p {
   .physician-credentials {
     grid-template-columns: 1fr;
   }
+
+  .path-overlay--inline {
+    margin-top: var(--space-3);
+    margin-bottom: calc(var(--space-4) * -1);
+  }
+
+  .path-overlay--physician {
+    width: 2.25rem;
+    opacity: 0.88;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1107,6 +1414,26 @@ p {
 
   [data-reveal="heading"] {
     clip-path: none !important;
+  }
+
+  [data-scene] [data-scene-order] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  [data-draw-path] {
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+  .scroll-progress-bar,
+  .process-scroll-fill,
+  .process-step::before,
+  .process-step .process-index {
+    transition: none !important;
   }
 
   .strand-node {

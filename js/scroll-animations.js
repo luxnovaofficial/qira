@@ -1,8 +1,10 @@
 (() => {
   const REVEAL_THRESHOLD = 0.18;
+  const SCENE_THRESHOLD = 0.22;
   const STRAND_THRESHOLD = 0.32;
   const SHIMMER_THRESHOLD = 0.5;
   const STAGGER_DELAY = 60;
+  const SCENE_STAGGER_BASE = 180;
   const REVEAL_DURATION = 680;
   const HEADING_REVEAL_DURATION = 900;
   const STRAND_SETTLE_DELAY = 2000;
@@ -17,6 +19,7 @@
 
   let initialized = false;
   let observers = [];
+  const sceneTimeouts = new WeakMap();
 
   function easedStagger(index, total) {
     if (total <= 1) return 0;
@@ -31,14 +34,18 @@
     if (initialized) return;
     initialized = true;
 
-    const revealElements = Array.from(document.querySelectorAll("[data-reveal]"));
+    const revealElements = Array.from(document.querySelectorAll("[data-reveal]")).filter(
+      (element) => !isSceneManagedReveal(element)
+    );
+    const sceneElements = Array.from(document.querySelectorAll("[data-scene]"));
     const strandDividers = Array.from(document.querySelectorAll(".strand-divider"));
     const shimmerElements = Array.from(document.querySelectorAll(".compound-shimmer"));
 
-    if (!revealElements.length && !strandDividers.length && !shimmerElements.length) return;
+    if (!revealElements.length && !sceneElements.length && !strandDividers.length && !shimmerElements.length) return;
 
     if (typeof IntersectionObserver !== "function" || reducedMotionQuery.matches) {
       revealImmediately(revealElements);
+      revealScenesImmediately(sceneElements);
       settleStrands(strandDividers);
       return;
     }
@@ -99,11 +106,35 @@
 
     observers = [revealObserver, strandObserver, shimmerObserver];
 
+    if (sceneElements.length) {
+      const sceneObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting || entry.intersectionRatio < SCENE_THRESHOLD) return;
+
+            triggerScene(entry.target);
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: [0, SCENE_THRESHOLD],
+          rootMargin: buildRootMargin()
+        }
+      );
+
+      sceneElements.forEach((element) => {
+        sceneObserver.observe(element);
+      });
+
+      observers.push(sceneObserver);
+    }
+
     if (typeof reducedMotionQuery.addEventListener === "function") {
       reducedMotionQuery.addEventListener("change", (event) => {
         if (!event.matches) return;
         disconnectObservers();
         revealImmediately(revealElements);
+        revealScenesImmediately(sceneElements);
         settleStrands(strandDividers);
       });
     } else if (typeof reducedMotionQuery.addListener === "function") {
@@ -111,6 +142,7 @@
         if (!event.matches) return;
         disconnectObservers();
         revealImmediately(revealElements);
+        revealScenesImmediately(sceneElements);
         settleStrands(strandDividers);
       });
     }
@@ -184,6 +216,36 @@
     element.classList.add("shimmer-active");
   }
 
+  function triggerScene(container) {
+    if (!container || container.dataset.sceneTriggered === "true") return;
+
+    const actors = Array.from(container.querySelectorAll("[data-scene-order]")).sort(
+      (left, right) => Number.parseInt(left.dataset.sceneOrder || "0", 10) - Number.parseInt(right.dataset.sceneOrder || "0", 10)
+    );
+    const timeoutIds = [];
+
+    container.dataset.sceneTriggered = "true";
+    container.classList.add("scene-active");
+
+    actors.forEach((actor, index) => {
+      const delay = index * SCENE_STAGGER_BASE;
+
+      actor.style.willChange = getRevealWillChange(actor);
+
+      timeoutIds.push(
+        window.setTimeout(() => {
+          actor.classList.add("scene-entered");
+
+          window.setTimeout(() => {
+            clearWillChange(actor);
+          }, getRevealDuration(actor) + 120);
+        }, delay)
+      );
+    });
+
+    sceneTimeouts.set(container, timeoutIds);
+  }
+
   function revealImmediately(elements) {
     elements.forEach((element) => {
       element.classList.add("revealed");
@@ -191,6 +253,20 @@
 
       element.querySelectorAll("[data-reveal-item]").forEach((item) => {
         clearWillChange(item);
+      });
+    });
+  }
+
+  function revealScenesImmediately(containers) {
+    containers.forEach((container) => {
+      clearSceneTimers(container);
+
+      container.dataset.sceneTriggered = "true";
+      container.classList.add("scene-active");
+
+      container.querySelectorAll("[data-scene-order]").forEach((actor) => {
+        actor.classList.add("scene-entered");
+        clearWillChange(actor);
       });
     });
   }
@@ -245,6 +321,25 @@
     if (element.dataset.reveal === "fade") return "opacity";
     if (element.dataset.reveal === "heading") return "opacity, transform, clip-path";
     return "opacity, transform";
+  }
+
+  function isSceneManagedReveal(element) {
+    const scene = element.closest("[data-scene]");
+
+    if (!scene) return false;
+
+    return element.hasAttribute("data-scene-order") || Boolean(element.querySelector("[data-scene-order]"));
+  }
+
+  function clearSceneTimers(container) {
+    const timeoutIds = sceneTimeouts.get(container);
+
+    if (!timeoutIds) return;
+
+    timeoutIds.forEach((timeoutId) => {
+      window.clearTimeout(timeoutId);
+    });
+    sceneTimeouts.delete(container);
   }
 
   function disconnectObservers() {

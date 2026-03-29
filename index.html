@@ -57,6 +57,9 @@
           </nav>
           <a href="#process" class="cta-button">Begin</a>
         </div>
+        <div class="scroll-progress" aria-hidden="true">
+          <div class="scroll-progress-bar"></div>
+        </div>
       </header>
 
       <main>
@@ -117,6 +120,16 @@
                 Each code is a curated compound protocol, designed around a specific optimization goal and delivered
                 only under physician oversight.
               </p>
+            </div>
+            <div class="path-overlay path-overlay--inline" data-path-group aria-hidden="true">
+              <svg class="path-overlay-svg path-overlay-svg--codes" viewBox="0 0 800 40" preserveAspectRatio="none">
+                <path
+                  data-draw-path
+                  data-draw-delay="100"
+                  class="svg-path svg-path--accent"
+                  d="M 0,20 L 120,20 L 140,8 L 160,32 L 180,8 L 200,32 L 220,20 L 800,20"
+                />
+              </svg>
             </div>
             <div class="codes-row codes-featured mt-12" data-reveal="group" data-reveal-group>
               <article class="code-card code-card-featured" data-reveal-item>
@@ -181,6 +194,23 @@
           </div>
         </section>
 
+        <div class="path-overlay" data-path-group data-path-progress aria-hidden="true">
+          <svg class="path-overlay-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+              data-draw-path
+              data-draw-delay="0"
+              class="svg-path svg-path--connector"
+              d="M 0,60 C 200,10 400,110 600,60 C 800,10 1000,110 1200,60"
+            />
+            <path
+              data-draw-path
+              data-draw-delay="200"
+              class="svg-path svg-path--connector-accent"
+              d="M 0,62 C 200,14 400,108 600,62 C 800,16 1000,108 1200,62"
+            />
+          </svg>
+        </div>
+
         <section id="physician" class="section-divider section-divider-strand">
           <div class="strand-divider" aria-hidden="true">
             <span class="strand-signal"></span>
@@ -201,6 +231,16 @@
             </svg>
           </div>
           <div class="section-container section-padding">
+            <div class="path-overlay path-overlay--physician" data-path-group aria-hidden="true">
+              <svg class="path-overlay-svg path-overlay-svg--physician" viewBox="0 0 100 400" preserveAspectRatio="none">
+                <path
+                  data-draw-path
+                  data-draw-delay="300"
+                  class="svg-path svg-path--flow"
+                  d="M 50,0 C 20,80 80,160 50,240 C 20,320 80,380 50,400"
+                />
+              </svg>
+            </div>
             <div class="grid-2 items-center gap-10">
               <div class="physician-frame physician-frame-accent" data-reveal="scale">
                 <img
@@ -275,37 +315,72 @@
             </svg>
           </div>
           <div class="section-container section-padding">
-            <div class="max-w-[38rem]">
-              <p class="section-label" data-reveal="fade">Our Process</p>
-              <h2 data-reveal="heading">From labs to protocol in four deliberate steps.</h2>
+            <div class="process-scene" data-scene data-process-progress>
+              <div class="max-w-[38rem]">
+                <p class="section-label" data-reveal="fade" data-scene-order="0">Our Process</p>
+                <h2 data-reveal="heading" data-scene-order="1">From labs to protocol in four deliberate steps.</h2>
+              </div>
+              <div class="process-scroll-meter" aria-hidden="true">
+                <div class="process-scroll-numbers">
+                  <span class="process-scroll-current" data-process-current>01</span>
+                  <span class="process-scroll-divider"></span>
+                  <span class="process-scroll-total">04</span>
+                </div>
+                <div class="process-scroll-track">
+                  <span class="process-scroll-fill"></span>
+                </div>
+              </div>
+              <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4" data-reveal="group" data-reveal-group>
+                <article class="process-step" data-reveal-item data-scene-order="2" data-process-step="1">
+                  <span class="process-index font-mono">01</span>
+                  <h3>Labs</h3>
+                  <p>
+                    Comprehensive bloodwork and metabolic panels set the direction. Nothing is prescribed from a
+                    questionnaire.
+                  </p>
+                </article>
+                <article class="process-step" data-reveal-item data-scene-order="3" data-process-step="2">
+                  <span class="process-index font-mono">02</span>
+                  <h3>Consult</h3>
+                  <p>
+                    A one-on-one physician review connects your goals, history, and lab markers into a clear protocol
+                    path.
+                  </p>
+                </article>
+                <article class="process-step" data-reveal-item data-scene-order="4" data-process-step="3">
+                  <span class="process-index font-mono">03</span>
+                  <h3>Code</h3>
+                  <p>
+                    Your protocol is assembled as a precision code, a curated compound sequence designed around your
+                    specific markers.
+                  </p>
+                </article>
+                <article class="process-step" data-reveal-item data-scene-order="5" data-process-step="4">
+                  <span class="process-index font-mono">04</span>
+                  <h3>Consistency</h3>
+                  <p>
+                    Ongoing labs, physician check-ins, and protocol refinements keep the system accountable to your
+                    biology.
+                  </p>
+                </article>
+              </div>
+              <p class="prose mt-12 max-w-[42rem] text-text-secondary" data-reveal="text" data-scene-order="6">
+                No step exists without the one before it. That's the point.
+              </p>
             </div>
-            <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4" data-reveal="group" data-reveal-group>
-              <article class="process-step" data-reveal-item>
-                <span class="process-index font-mono">01</span>
-                <h3>Labs</h3>
-                <p>Comprehensive bloodwork and metabolic panels set the direction. Nothing is prescribed from a questionnaire.</p>
-              </article>
-              <article class="process-step" data-reveal-item>
-                <span class="process-index font-mono">02</span>
-                <h3>Consult</h3>
-                <p>A one-on-one physician review connects your goals, history, and lab markers into a clear protocol path.</p>
-              </article>
-              <article class="process-step" data-reveal-item>
-                <span class="process-index font-mono">03</span>
-                <h3>Code</h3>
-                <p>Your protocol is assembled as a precision code, a curated compound sequence designed around your specific markers.</p>
-              </article>
-              <article class="process-step" data-reveal-item>
-                <span class="process-index font-mono">04</span>
-                <h3>Consistency</h3>
-                <p>Ongoing labs, physician check-ins, and protocol refinements keep the system accountable to your biology.</p>
-              </article>
-            </div>
-            <p class="prose mt-12 max-w-[42rem] text-text-secondary" data-reveal="text">
-              No step exists without the one before it. That's the point.
-            </p>
           </div>
         </section>
+
+        <div class="path-overlay" data-path-group data-path-progress aria-hidden="true">
+          <svg class="path-overlay-svg path-overlay-svg--process-connector" viewBox="0 0 1200 100" preserveAspectRatio="none">
+            <path
+              data-draw-path
+              data-draw-delay="0"
+              class="svg-path svg-path--connector"
+              d="M 0,50 Q 300,10 600,50 Q 900,90 1200,50"
+            />
+          </svg>
+        </div>
 
         <section id="difference" class="section-divider section-divider-strand">
           <div class="strand-divider" aria-hidden="true">
@@ -391,6 +466,7 @@
 
     <script src="./js/scroll-animations.js" defer></script>
     <script src="./js/hero-animation.js" defer></script>
+    <script src="./js/path-choreography.js" defer></script>
     <script src="./js/main.js" defer></script>
   </body>
 </html>
