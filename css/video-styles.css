@@ -1,0 +1,120 @@
+/* QIRA Peptide Site - code card video styling */
+
+.code-card-video-wrap {
+  position: relative;
+  margin-bottom: var(--space-4);
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklch, var(--color-accent-silver) 18%, var(--color-border));
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--color-bg-surface) 94%, transparent),
+    color-mix(in oklch, var(--color-accent-bio) 10%, var(--color-bg-elevated))
+  );
+  isolation: isolate;
+}
+
+.code-card-video-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    color-mix(in oklch, var(--color-accent-silver) 16%, transparent) 42%,
+    color-mix(in oklch, var(--color-accent-bio) 12%, transparent) 50%,
+    transparent 62%
+  );
+  transform: translate3d(-130%, 0, 0);
+}
+
+.code-card-video-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.6;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 12%,
+    color-mix(in oklch, var(--color-bg) 10%, transparent) 70%,
+    color-mix(in oklch, var(--color-bg) 38%, transparent) 100%
+  );
+  transition: opacity var(--duration-state) var(--ease-out-quart);
+}
+
+.code-card__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin-bottom: 0;
+  border: 0;
+  border-radius: 0;
+  background: color-mix(in oklch, var(--color-bg-surface) 88%, black);
+  opacity: 0;
+  filter: saturate(0.88) brightness(0.9);
+  transform: scale(1.02);
+  transition:
+    opacity var(--duration-state) var(--ease-out-quart),
+    transform var(--duration-emphasis) var(--ease-ml-default),
+    filter var(--duration-state) var(--ease-out-quart);
+}
+
+.code-card-video-wrap.video-ready .code-card__video,
+.code-card__video.video-ready {
+  opacity: 1;
+}
+
+.code-card-video-wrap.video-active .code-card__video,
+.code-card:hover .code-card__video,
+.code-card:focus-within .code-card__video {
+  filter: saturate(1.02) brightness(1.02);
+  transform: scale(1.045);
+}
+
+.code-card-video-wrap.video-active::after,
+.code-card:hover .code-card-video-wrap::after,
+.code-card:focus-within .code-card-video-wrap::after {
+  opacity: 0.28;
+}
+
+.code-card-video-wrap.video-loading::before {
+  opacity: 1;
+  animation: code-video-sheen 1200ms var(--ease-out-expo) infinite;
+}
+
+.code-card-video-wrap.video-reduced .code-card__video {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+@keyframes code-video-sheen {
+  from {
+    transform: translate3d(-130%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(130%, 0, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .code-card-video-wrap {
+    border-radius: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-card-video-wrap::before {
+    animation: none;
+  }
+
+  .code-card__video {
+    transition: opacity var(--duration-state) var(--ease-out-quart);
+    transform: none;
+  }
+}

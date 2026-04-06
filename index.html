@@ -44,6 +44,7 @@
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./css/tokens.css" />
+    <link rel="stylesheet" href="./css/video-styles.css" />
   </head>
   <body class="bg-bg font-sans text-text-primary">
     <div class="site-shell">
@@ -133,12 +134,18 @@
             </div>
             <div class="codes-row codes-featured mt-12" data-reveal="group" data-reveal-group>
               <article class="code-card code-card-featured" data-reveal-item>
+                <div class="code-card-video-wrap">
+                  <video class="code-card-img code-card__video" poster="assets/codes/glow.jpg" data-video-src="assets/code-videos/glow.mp4" muted loop playsinline preload="none" aria-label="Glow Code animation"></video>
+                </div>
                 <p class="code-index font-mono">01</p>
                 <h3>Glow Code</h3>
                 <p class="compound-line compound-shimmer font-mono">GHK-Cu · NAD+</p>
                 <p>Skin-forward optimization with a polished, restorative protocol.</p>
               </article>
               <article class="code-card code-card-featured" data-reveal-item>
+                <div class="code-card-video-wrap">
+                  <video class="code-card-img code-card__video" poster="assets/codes/weight.jpg" data-video-src="assets/code-videos/weight.mp4" muted loop playsinline preload="none" aria-label="Weight Code animation"></video>
+                </div>
                 <p class="code-index font-mono">02</p>
                 <h3>Weight Code</h3>
                 <p class="compound-line compound-shimmer font-mono">GLP-1 · MIC</p>
@@ -147,18 +154,27 @@
             </div>
             <div class="codes-row codes-primary mt-4" data-reveal="group" data-reveal-group>
               <article class="code-card" data-reveal-item>
+                <div class="code-card-video-wrap">
+                  <video class="code-card-img code-card__video" poster="assets/codes/performance.jpg" data-video-src="assets/code-videos/performance.mp4" muted loop playsinline preload="none" aria-label="Performance Code animation"></video>
+                </div>
                 <p class="code-index font-mono">03</p>
                 <h3>Performance Code</h3>
                 <p class="compound-line compound-shimmer font-mono">CJC-1295 · Ipamorelin</p>
                 <p>Output and recovery calibrated through growth-hormone signaling.</p>
               </article>
               <article class="code-card" data-reveal-item>
+                <div class="code-card-video-wrap">
+                  <video class="code-card-img code-card__video" poster="assets/codes/recovery.jpg" data-video-src="assets/code-videos/recovery.mp4" muted loop playsinline preload="none" aria-label="Recovery Code animation"></video>
+                </div>
                 <p class="code-index font-mono">04</p>
                 <h3>Recovery Code</h3>
                 <p class="compound-line compound-shimmer font-mono">BPC-157 · TB-500</p>
                 <p>Resilience support with careful dosing and physician oversight.</p>
               </article>
               <article class="code-card" data-reveal-item>
+                <div class="code-card-video-wrap">
+                  <video class="code-card-img code-card__video" poster="assets/codes/longevity.jpg" data-video-src="assets/code-videos/longevity.mp4" muted loop playsinline preload="none" aria-label="Longevity Code animation"></video>
+                </div>
                 <p class="code-index font-mono">05</p>
                 <h3>Longevity Code</h3>
                 <p class="compound-line compound-shimmer font-mono">Epithalon · NAD+</p>
@@ -167,24 +183,36 @@
             </div>
             <div class="codes-row codes-supporting mt-4" data-reveal="group" data-reveal-group>
               <article class="code-card code-card-compact" data-reveal-item>
+                <div class="code-card-video-wrap">
+                  <video class="code-card-img code-card__video" poster="assets/codes/hormone.jpg" data-video-src="assets/code-videos/hormone.mp4" muted loop playsinline preload="none" aria-label="Hormone Code animation"></video>
+                </div>
                 <p class="code-index font-mono">06</p>
                 <h3>Hormone Code</h3>
                 <p class="compound-line compound-shimmer font-mono">Enclomiphene · DHEA</p>
                 <p>Endocrine balance anchored in lab work and physician review.</p>
               </article>
               <article class="code-card code-card-compact" data-reveal-item>
+                <div class="code-card-video-wrap">
+                  <video class="code-card-img code-card__video" poster="assets/codes/focus.jpg" data-video-src="assets/code-videos/focus.mp4" muted loop playsinline preload="none" aria-label="Focus Code animation"></video>
+                </div>
                 <p class="code-index font-mono">07</p>
                 <h3>Focus Code</h3>
                 <p class="compound-line compound-shimmer font-mono">Semax · Selank</p>
                 <p>Cognitive clarity support through neuropeptide protocols.</p>
               </article>
               <article class="code-card code-card-compact" data-reveal-item>
+                <div class="code-card-video-wrap">
+                  <video class="code-card-img code-card__video" poster="assets/codes/sleep.jpg" data-video-src="assets/code-videos/sleep.mp4" muted loop playsinline preload="none" aria-label="Sleep Code animation"></video>
+                </div>
                 <p class="code-index font-mono">08</p>
                 <h3>Sleep Code</h3>
                 <p class="compound-line compound-shimmer font-mono">DSIP · Glycine</p>
                 <p>Restorative sleep architecture support, not sedation.</p>
               </article>
               <article class="code-card code-card-compact" data-reveal-item>
+                <div class="code-card-video-wrap">
+                  <video class="code-card-img code-card__video" poster="assets/codes/sustainability.jpg" data-video-src="assets/code-videos/sustainability.mp4" muted loop playsinline preload="none" aria-label="Sustainability Code animation"></video>
+                </div>
                 <p class="code-index font-mono">09</p>
                 <h3>Sustainability Code</h3>
                 <p class="compound-line compound-shimmer font-mono">Glutathione · B12</p>
@@ -245,7 +273,7 @@
               <div class="physician-frame physician-frame-accent" data-reveal="scale">
                 <img
                   class="physician-portrait"
-                  src="assets/doctor.jpg"
+                  src="assets/doctor-upscaled.jpg"
                   alt="Portrait of Dr. Clifton Jackness"
                   loading="lazy"
                   decoding="async"
@@ -253,7 +281,7 @@
                 />
                 <div class="physician-fallback" role="img" aria-label="Portrait placeholder for Dr. Clifton Jackness">
                   <span class="physician-initials font-mono" aria-hidden="true">CJ</span>
-                  <p class="font-mono text-sm text-text-tertiary">assets/doctor.jpg</p>
+                  <p class="font-mono text-sm text-text-tertiary">assets/doctor-upscaled.jpg</p>
                 </div>
               </div>
               <div>
@@ -467,6 +495,7 @@
     <script src="./js/scroll-animations.js" defer></script>
     <script src="./js/hero-animation.js" defer></script>
     <script src="./js/path-choreography.js" defer></script>
+    <script src="./js/video-playback.js" defer></script>
     <script src="./js/main.js" defer></script>
   </body>
 </html>

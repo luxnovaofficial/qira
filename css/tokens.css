@@ -1,15 +1,15 @@
 :root {
-  --color-bg: oklch(10% 0.01 260);
-  --color-bg-elevated: oklch(14% 0.01 260);
-  --color-bg-surface: oklch(18% 0.015 260);
-  --color-text-primary: oklch(92% 0.01 80);
-  --color-text-secondary: oklch(68% 0.01 80);
-  --color-text-tertiary: oklch(50% 0.01 250);
+  --color-bg: oklch(97% 0.015 90);
+  --color-bg-elevated: oklch(94% 0.02 85);
+  --color-bg-surface: oklch(99% 0.005 90);
+  --color-text-primary: oklch(20% 0.02 60);
+  --color-text-secondary: oklch(35% 0.02 60);
+  --color-text-tertiary: oklch(52% 0.04 75);
   --color-accent-gold: oklch(75% 0.08 80);
-  --color-accent-silver: oklch(72% 0.02 250);
-  --color-accent-bio: oklch(68% 0.06 185);
-  --color-border: oklch(22% 0.01 260);
-  --color-border-subtle: oklch(18% 0.01 260);
+  --color-accent-silver: oklch(68% 0.06 65);
+  --color-accent-bio: oklch(68% 0.04 25);
+  --color-border: oklch(88% 0.01 60);
+  --color-border-subtle: oklch(90% 0.015 70);
 
   --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
   --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
@@ -75,8 +75,8 @@ body {
   line-height: var(--line-height-body);
   color: var(--color-text-primary);
   background:
-    radial-gradient(circle at top right, color-mix(in oklch, var(--color-accent-bio) 18%, transparent), transparent 28%),
-    radial-gradient(circle at left 12% top 20%, color-mix(in oklch, var(--color-accent-gold) 12%, transparent), transparent 36%),
+    radial-gradient(circle at top right, color-mix(in oklch, var(--color-accent-gold) 14%, transparent), transparent 28%),
+    radial-gradient(circle at left 12% top 20%, color-mix(in oklch, var(--color-accent-bio) 10%, transparent), transparent 36%),
     var(--color-bg);
   text-rendering: optimizeLegibility;
 }
@@ -317,7 +317,7 @@ p {
   pointer-events: none;
   border-radius: 999px;
   filter: blur(80px);
-  opacity: 0.12;
+  opacity: 0.08;
 }
 
 .site-shell::before {
@@ -325,7 +325,7 @@ p {
   height: 22rem;
   top: 12rem;
   right: -6rem;
-  background: var(--color-accent-bio);
+  background: var(--color-accent-gold);
 }
 
 .site-shell::after {
@@ -333,7 +333,7 @@ p {
   height: 18rem;
   bottom: 12rem;
   left: -4rem;
-  background: var(--color-accent-gold);
+  background: var(--color-accent-bio);
 }
 
 .site-header {
@@ -342,7 +342,7 @@ p {
   z-index: 20;
   backdrop-filter: blur(18px);
   background: color-mix(in oklch, var(--color-bg) 88%, transparent);
-  border-bottom: 1px solid color-mix(in oklch, var(--color-border-subtle) 82%, transparent);
+  border-bottom: 1px solid color-mix(in oklch, var(--color-border) 60%, transparent);
 }
 
 .logo-mark {
@@ -393,9 +393,9 @@ p {
   width: 0%;
   background: linear-gradient(
     90deg,
-    var(--color-accent-bio) 0%,
-    var(--color-accent-gold) 50%,
-    var(--color-accent-silver) 100%
+    var(--color-accent-gold) 0%,
+    var(--color-accent-silver) 50%,
+    var(--color-accent-bio) 100%
   );
   transition: width 80ms linear;
   will-change: width;
@@ -448,7 +448,7 @@ p {
 }
 
 .strand-node {
-  fill: color-mix(in oklch, var(--color-accent-bio) 72%, transparent);
+  fill: color-mix(in oklch, var(--color-accent-gold) 72%, transparent);
   opacity: 0.12;
   transform-box: fill-box;
   transform-origin: center;
@@ -468,7 +468,7 @@ p {
     color-mix(in oklch, var(--color-accent-gold) 72%, transparent) 34%,
     color-mix(in oklch, var(--color-accent-bio) 72%, transparent) 100%
   );
-  box-shadow: 0 0 1rem color-mix(in oklch, var(--color-accent-bio) 28%, transparent);
+  box-shadow: 0 0 1rem color-mix(in oklch, var(--color-accent-gold) 28%, transparent);
   transform: translate3d(-130%, -50%, 0);
 }
 
@@ -591,7 +591,7 @@ p {
 
 .hero-animation::after {
   z-index: 2;
-  background: radial-gradient(ellipse at center, transparent 36%, color-mix(in oklch, var(--color-bg-elevated) 92%, transparent) 100%);
+  background: radial-gradient(ellipse at center, transparent 36%, color-mix(in oklch, var(--color-bg-elevated) 60%, transparent) 100%);
 }
 
 .hero-canvas {
@@ -699,7 +699,7 @@ p {
 }
 
 .svg-path--connector {
-  stroke: var(--color-accent-bio);
+  stroke: var(--color-accent-gold);
   stroke-width: 1;
   opacity: 0.18;
 }
@@ -949,9 +949,9 @@ p {
   width: 100%;
   background: linear-gradient(
     90deg,
-    var(--color-accent-bio) 0%,
-    var(--color-accent-gold) 52%,
-    var(--color-accent-silver) 100%
+    var(--color-accent-gold) 0%,
+    var(--color-accent-silver) 52%,
+    var(--color-accent-bio) 100%
   );
   transform: scaleX(var(--process-progress, 0));
   transform-origin: left center;
@@ -978,15 +978,16 @@ p {
 }
 
 .cta-button {
-  color: var(--color-bg);
-  background: var(--color-accent-gold);
+  color: oklch(97% 0.015 90);
+  background: oklch(20% 0.02 60);
 }
 
 .cta-button:hover,
 .cta-button:focus-visible {
   filter: brightness(1.1);
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px color-mix(in oklch, var(--color-accent-gold) 18%, transparent);
+  filter: brightness(1.3);
+  box-shadow: 0 4px 16px color-mix(in oklch, oklch(20% 0.02 60) 22%, transparent);
 }
 
 .secondary-link {
@@ -1009,9 +1010,10 @@ p {
   border: 1px solid var(--color-border);
   background: linear-gradient(
     180deg,
-    color-mix(in oklch, var(--color-bg-surface) 80%, transparent),
-    color-mix(in oklch, var(--color-bg-elevated) 96%, transparent)
+    var(--color-bg-surface),
+    color-mix(in oklch, var(--color-bg-elevated) 60%, var(--color-bg-surface))
   );
+  box-shadow: 0 1px 3px color-mix(in oklch, oklch(20% 0.02 60) 6%, transparent);
 }
 
 .code-card,
@@ -1063,9 +1065,9 @@ p {
   height: 1px;
   background: linear-gradient(
     90deg,
-    color-mix(in oklch, var(--color-accent-bio) 84%, transparent) 0%,
-    color-mix(in oklch, var(--color-accent-gold) 92%, transparent) 55%,
-    color-mix(in oklch, var(--color-accent-silver) 88%, transparent) 100%
+    color-mix(in oklch, var(--color-accent-gold) 84%, transparent) 0%,
+    color-mix(in oklch, var(--color-accent-silver) 92%, transparent) 55%,
+    color-mix(in oklch, var(--color-accent-bio) 88%, transparent) 100%
   );
   opacity: calc(0.12 + (var(--process-step-progress, 0) * 0.9));
   transform: scaleX(var(--process-step-progress, 0));
@@ -1081,7 +1083,7 @@ p {
 
 .process-step-current {
   border-color: color-mix(in oklch, var(--color-accent-silver) 26%, var(--color-border));
-  box-shadow: 0 6px 28px color-mix(in oklch, var(--color-bg) 54%, transparent);
+  box-shadow: 0 4px 24px color-mix(in oklch, oklch(20% 0.02 60) 8%, transparent);
 }
 
 .process-step-current .process-index {
@@ -1093,12 +1095,24 @@ p {
 .difference-list article:hover {
   border-color: color-mix(in oklch, var(--color-accent-silver) 22%, var(--color-border));
   transform: translate3d(0, -2px, 0);
-  box-shadow: 0 4px 24px color-mix(in oklch, var(--color-bg) 60%, transparent);
+  box-shadow: 0 4px 24px color-mix(in oklch, oklch(20% 0.02 60) 8%, transparent);
 }
 
 .code-card-featured {
-  min-height: 18rem;
+  min-height: 12rem;
   border-top: 2px solid color-mix(in oklch, var(--color-accent-gold) 36%, var(--color-border));
+}
+
+.code-card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-bottom: var(--space-4);
+  border: 1px solid color-mix(in oklch, var(--color-accent-silver) 18%, var(--color-border));
+  background: var(--color-bg-elevated);
+  overflow: hidden;
 }
 
 .code-card-compact {
@@ -1144,9 +1158,9 @@ p {
     90deg,
     transparent 0%,
     color-mix(in oklch, var(--color-accent-gold) 54%, transparent) 38%,
-    color-mix(in oklch, var(--color-accent-bio) 58%, transparent) 100%
+    color-mix(in oklch, var(--color-accent-silver) 58%, transparent) 100%
   );
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
   transform: translate3d(0, 0, 0) scaleX(0.84);
 }
 
@@ -1241,8 +1255,10 @@ p {
 
 .physician-quote {
   margin: 0;
-  padding-left: var(--space-5);
-  border-left: 2px solid color-mix(in oklch, var(--color-accent-gold) 40%, var(--color-border));
+  padding: var(--space-4) var(--space-5);
+  border-left: 2px solid color-mix(in oklch, var(--color-accent-gold) 60%, var(--color-border));
+  background: color-mix(in oklch, var(--color-bg-elevated) 50%, transparent);
+  border-radius: 0 var(--radius-sharp) var(--radius-sharp) 0;
 }
 
 .physician-quote p {
