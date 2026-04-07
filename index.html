@@ -48,14 +48,20 @@
   </head>
   <body class="bg-bg font-sans text-text-primary">
     <!-- Password Gate -->
-    <div id="password-gate" style="position:fixed;inset:0;z-index:9999;background:oklch(97% 0.015 90);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;">
-      <p style="font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3.5rem);color:oklch(20% 0.02 60);letter-spacing:-0.02em;">QIRA</p>
-      <p style="font-size:0.85rem;color:oklch(52% 0.04 75);letter-spacing:0.05em;text-transform:uppercase;">Enter access code</p>
-      <form id="gate-form" style="display:flex;gap:0.75rem;align-items:center;" onsubmit="return checkGate()">
-        <input id="gate-input" type="password" autocomplete="off" placeholder="••••••••" style="font-family:'JetBrains Mono',monospace;font-size:1rem;padding:0.7rem 1.2rem;border:1px solid oklch(88% 0.01 60);border-radius:6px;background:oklch(99% 0.005 90);color:oklch(20% 0.02 60);outline:none;width:200px;transition:border-color 0.2s;" onfocus="this.style.borderColor='oklch(75% 0.08 80)'" onblur="this.style.borderColor='oklch(88% 0.01 60)'" />
-        <button type="submit" style="font-family:'Instrument Sans',sans-serif;font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;background:oklch(20% 0.02 60);color:oklch(97% 0.015 90);border:none;border-radius:6px;cursor:pointer;letter-spacing:0.03em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Enter</button>
+    <div id="password-gate" style="position:fixed;inset:0;z-index:9999;background:oklch(97% 0.015 90);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;overflow:hidden;">
+      <!-- Grain texture overlay -->
+      <div style="position:absolute;inset:0;opacity:0.04;background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);pointer-events:none;"></div>
+      <!-- Warm radial glow -->
+      <div style="position:absolute;top:-20%;right:-10%;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle,oklch(80% 0.08 80 / 0.15),transparent 70%);filter:blur(60px);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:-15%;left:-5%;width:45%;height:45%;border-radius:50%;background:radial-gradient(circle,oklch(70% 0.05 25 / 0.1),transparent 70%);filter:blur(50px);pointer-events:none;"></div>
+      <p style="font-family:'Instrument Serif',serif;font-size:clamp(3.5rem,6vw,6rem);color:oklch(20% 0.02 60);letter-spacing:0.12em;font-weight:500;position:relative;">QIRA</p>
+      <div style="width:3rem;height:2px;background:oklch(75% 0.08 80);opacity:0.5;position:relative;"></div>
+      <p style="font-size:0.85rem;color:oklch(52% 0.04 75);letter-spacing:0.12em;text-transform:uppercase;font-weight:600;position:relative;">Enter access code</p>
+      <form id="gate-form" style="display:flex;gap:0.75rem;align-items:center;position:relative;" onsubmit="return checkGate()">
+        <input id="gate-input" type="password" autocomplete="off" placeholder="••••••••" style="font-family:'JetBrains Mono',monospace;font-size:1rem;padding:0.85rem 1.4rem;border:1px solid oklch(88% 0.01 60);border-radius:8px;background:oklch(99% 0.005 90);color:oklch(20% 0.02 60);outline:none;width:220px;transition:border-color 0.2s,box-shadow 0.2s;" onfocus="this.style.borderColor='oklch(75% 0.08 80)';this.style.boxShadow='0 0 0 3px oklch(75% 0.08 80 / 0.12)'" onblur="this.style.borderColor='oklch(88% 0.01 60)';this.style.boxShadow='none'" />
+        <button type="submit" style="font-family:'Instrument Sans',sans-serif;font-size:0.85rem;font-weight:600;padding:0.85rem 1.8rem;background:oklch(20% 0.02 60);color:oklch(97% 0.015 90);border:none;border-radius:8px;cursor:pointer;letter-spacing:0.06em;transition:opacity 0.2s,transform 0.2s;" onmouseover="this.style.opacity='0.85';this.style.transform='translateY(-1px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">Enter</button>
       </form>
-      <p id="gate-error" style="font-size:0.8rem;color:oklch(55% 0.15 25);opacity:0;transition:opacity 0.3s;">Incorrect code</p>
+      <p id="gate-error" style="font-size:0.8rem;color:oklch(55% 0.15 25);opacity:0;transition:opacity 0.3s;position:relative;">Incorrect code</p>
     </div>
     <script>
       (function(){
@@ -74,6 +80,18 @@
         return false;
       }
     </script>
+    <!-- Decorative background blobs -->
+    <div aria-hidden="true" style="position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;">
+      <svg style="position:absolute;top:5%;right:-5%;width:50vw;height:50vw;max-width:600px;max-height:600px;opacity:0.06;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="oklch(75% 0.08 80)" d="M45.3,-62.5C57.4,-54.2,64.8,-38.5,69.2,-22.3C73.6,-6.1,75.1,10.7,69.4,24.8C63.7,38.9,50.9,50.4,36.8,58.8C22.7,67.2,7.3,72.5,-8.2,72.3C-23.7,72.1,-39.2,66.5,-51.2,56.4C-63.1,46.3,-71.4,31.8,-74.3,16.1C-77.2,0.4,-74.7,-16.5,-66.5,-29.5C-58.3,-42.5,-44.4,-51.6,-30.5,-59C-16.7,-66.3,-2.8,-71.9,9.8,-69.8C22.4,-67.7,33.2,-70.9,45.3,-62.5Z" transform="translate(100 100)"/>
+      </svg>
+      <svg style="position:absolute;bottom:10%;left:-8%;width:40vw;height:40vw;max-width:500px;max-height:500px;opacity:0.05;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="oklch(68% 0.04 25)" d="M39.5,-51.1C52.9,-45.2,66.7,-36.5,72.1,-23.8C77.5,-11.1,74.5,5.7,67.4,19.2C60.3,32.7,49.1,42.9,36.7,51.6C24.3,60.3,10.7,67.5,-3.5,71.1C-17.7,74.7,-32.4,74.7,-43.5,67.1C-54.6,59.5,-62.1,44.2,-66.8,28.6C-71.5,13,-73.5,-2.9,-69.7,-17.1C-65.9,-31.3,-56.3,-43.8,-44.1,-50.1C-31.9,-56.3,-17.1,-56.3,-2.1,-53.5C12.9,-50.7,26.1,-57,39.5,-51.1Z" transform="translate(100 100)"/>
+      </svg>
+      <svg style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60vw;height:60vw;max-width:700px;max-height:700px;opacity:0.03;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="oklch(75% 0.08 80)" d="M42.7,-55.5C55.3,-49.8,65,-36.1,70.5,-20.8C76,-5.5,77.3,11.4,71.1,25.2C64.9,39,51.2,49.7,36.7,57.1C22.2,64.5,6.9,68.6,-8.1,67.3C-23.1,66,-37.8,59.3,-49.6,49C-61.4,38.7,-70.3,24.8,-73.5,9.3C-76.7,-6.2,-74.2,-23.3,-65.1,-35.3C-56,-47.3,-40.3,-54.2,-25.7,-58.9C-11.1,-63.6,2.4,-66.1,16.2,-64.4C30,-62.7,30.1,-61.2,42.7,-55.5Z" transform="translate(100 100)"/>
+      </svg>
+    </div>
     <div class="site-shell">
       <header id="site-header" class="site-header">
         <div class="section-container flex flex-wrap items-center justify-between gap-4 py-6">
