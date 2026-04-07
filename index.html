@@ -44,9 +44,36 @@
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./css/tokens.css" />
-    <link rel="stylesheet" href="./css/video-styles.css" />
+    <!-- <link rel="stylesheet" href="./css/video-styles.css" /> -->
   </head>
   <body class="bg-bg font-sans text-text-primary">
+    <!-- Password Gate -->
+    <div id="password-gate" style="position:fixed;inset:0;z-index:9999;background:oklch(97% 0.015 90);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;">
+      <p style="font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3.5rem);color:oklch(20% 0.02 60);letter-spacing:-0.02em;">QIRA</p>
+      <p style="font-size:0.85rem;color:oklch(52% 0.04 75);letter-spacing:0.05em;text-transform:uppercase;">Enter access code</p>
+      <form id="gate-form" style="display:flex;gap:0.75rem;align-items:center;" onsubmit="return checkGate()">
+        <input id="gate-input" type="password" autocomplete="off" placeholder="••••••••" style="font-family:'JetBrains Mono',monospace;font-size:1rem;padding:0.7rem 1.2rem;border:1px solid oklch(88% 0.01 60);border-radius:6px;background:oklch(99% 0.005 90);color:oklch(20% 0.02 60);outline:none;width:200px;transition:border-color 0.2s;" onfocus="this.style.borderColor='oklch(75% 0.08 80)'" onblur="this.style.borderColor='oklch(88% 0.01 60)'" />
+        <button type="submit" style="font-family:'Instrument Sans',sans-serif;font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;background:oklch(20% 0.02 60);color:oklch(97% 0.015 90);border:none;border-radius:6px;cursor:pointer;letter-spacing:0.03em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Enter</button>
+      </form>
+      <p id="gate-error" style="font-size:0.8rem;color:oklch(55% 0.15 25);opacity:0;transition:opacity 0.3s;">Incorrect code</p>
+    </div>
+    <script>
+      (function(){
+        if(sessionStorage.getItem('qira_auth')==='1'){document.getElementById('password-gate').style.display='none';}
+      })();
+      function checkGate(){
+        var v=document.getElementById('gate-input').value;
+        if(v==='qira2026'){
+          sessionStorage.setItem('qira_auth','1');
+          document.getElementById('password-gate').style.display='none';
+        }else{
+          document.getElementById('gate-error').style.opacity='1';
+          document.getElementById('gate-input').value='';
+          setTimeout(function(){document.getElementById('gate-error').style.opacity='0';},2000);
+        }
+        return false;
+      }
+    </script>
     <div class="site-shell">
       <header id="site-header" class="site-header">
         <div class="section-container flex flex-wrap items-center justify-between gap-4 py-6">
@@ -134,18 +161,14 @@
             </div>
             <div class="codes-row codes-featured mt-12" data-reveal="group" data-reveal-group>
               <article class="code-card code-card-featured" data-reveal-item>
-                <div class="code-card-video-wrap">
-                  <video class="code-card-img code-card__video" poster="assets/codes/glow.jpg" data-video-src="assets/code-videos/glow.mp4" muted loop playsinline preload="none" aria-label="Glow Code animation"></video>
-                </div>
+                <img class="code-card-img" src="assets/codes/glow.jpg" alt="Glow Code" loading="lazy" />
                 <p class="code-index font-mono">01</p>
                 <h3>Glow Code</h3>
                 <p class="compound-line compound-shimmer font-mono">GHK-Cu · NAD+</p>
                 <p>Skin-forward optimization with a polished, restorative protocol.</p>
               </article>
               <article class="code-card code-card-featured" data-reveal-item>
-                <div class="code-card-video-wrap">
-                  <video class="code-card-img code-card__video" poster="assets/codes/weight.jpg" data-video-src="assets/code-videos/weight.mp4" muted loop playsinline preload="none" aria-label="Weight Code animation"></video>
-                </div>
+                <img class="code-card-img" src="assets/codes/weight.jpg" alt="Weight Code" loading="lazy" />
                 <p class="code-index font-mono">02</p>
                 <h3>Weight Code</h3>
                 <p class="compound-line compound-shimmer font-mono">GLP-1 · MIC</p>
@@ -154,27 +177,21 @@
             </div>
             <div class="codes-row codes-primary mt-4" data-reveal="group" data-reveal-group>
               <article class="code-card" data-reveal-item>
-                <div class="code-card-video-wrap">
-                  <video class="code-card-img code-card__video" poster="assets/codes/performance.jpg" data-video-src="assets/code-videos/performance.mp4" muted loop playsinline preload="none" aria-label="Performance Code animation"></video>
-                </div>
+                <img class="code-card-img" src="assets/codes/performance.jpg" alt="Performance Code" loading="lazy" />
                 <p class="code-index font-mono">03</p>
                 <h3>Performance Code</h3>
                 <p class="compound-line compound-shimmer font-mono">CJC-1295 · Ipamorelin</p>
                 <p>Output and recovery calibrated through growth-hormone signaling.</p>
               </article>
               <article class="code-card" data-reveal-item>
-                <div class="code-card-video-wrap">
-                  <video class="code-card-img code-card__video" poster="assets/codes/recovery.jpg" data-video-src="assets/code-videos/recovery.mp4" muted loop playsinline preload="none" aria-label="Recovery Code animation"></video>
-                </div>
+                <img class="code-card-img" src="assets/codes/recovery.jpg" alt="Recovery Code" loading="lazy" />
                 <p class="code-index font-mono">04</p>
                 <h3>Recovery Code</h3>
                 <p class="compound-line compound-shimmer font-mono">BPC-157 · TB-500</p>
                 <p>Resilience support with careful dosing and physician oversight.</p>
               </article>
               <article class="code-card" data-reveal-item>
-                <div class="code-card-video-wrap">
-                  <video class="code-card-img code-card__video" poster="assets/codes/longevity.jpg" data-video-src="assets/code-videos/longevity.mp4" muted loop playsinline preload="none" aria-label="Longevity Code animation"></video>
-                </div>
+                <img class="code-card-img" src="assets/codes/longevity.jpg" alt="Longevity Code" loading="lazy" />
                 <p class="code-index font-mono">05</p>
                 <h3>Longevity Code</h3>
                 <p class="compound-line compound-shimmer font-mono">Epithalon · NAD+</p>
@@ -183,36 +200,28 @@
             </div>
             <div class="codes-row codes-supporting mt-4" data-reveal="group" data-reveal-group>
               <article class="code-card code-card-compact" data-reveal-item>
-                <div class="code-card-video-wrap">
-                  <video class="code-card-img code-card__video" poster="assets/codes/hormone.jpg" data-video-src="assets/code-videos/hormone.mp4" muted loop playsinline preload="none" aria-label="Hormone Code animation"></video>
-                </div>
+                <img class="code-card-img" src="assets/codes/hormone.jpg" alt="Hormone Code" loading="lazy" />
                 <p class="code-index font-mono">06</p>
                 <h3>Hormone Code</h3>
                 <p class="compound-line compound-shimmer font-mono">Enclomiphene · DHEA</p>
                 <p>Endocrine balance anchored in lab work and physician review.</p>
               </article>
               <article class="code-card code-card-compact" data-reveal-item>
-                <div class="code-card-video-wrap">
-                  <video class="code-card-img code-card__video" poster="assets/codes/focus.jpg" data-video-src="assets/code-videos/focus.mp4" muted loop playsinline preload="none" aria-label="Focus Code animation"></video>
-                </div>
+                <img class="code-card-img" src="assets/codes/focus.jpg" alt="Focus Code" loading="lazy" />
                 <p class="code-index font-mono">07</p>
                 <h3>Focus Code</h3>
                 <p class="compound-line compound-shimmer font-mono">Semax · Selank</p>
                 <p>Cognitive clarity support through neuropeptide protocols.</p>
               </article>
               <article class="code-card code-card-compact" data-reveal-item>
-                <div class="code-card-video-wrap">
-                  <video class="code-card-img code-card__video" poster="assets/codes/sleep.jpg" data-video-src="assets/code-videos/sleep.mp4" muted loop playsinline preload="none" aria-label="Sleep Code animation"></video>
-                </div>
+                <img class="code-card-img" src="assets/codes/sleep.jpg" alt="Sleep Code" loading="lazy" />
                 <p class="code-index font-mono">08</p>
                 <h3>Sleep Code</h3>
                 <p class="compound-line compound-shimmer font-mono">DSIP · Glycine</p>
                 <p>Restorative sleep architecture support, not sedation.</p>
               </article>
               <article class="code-card code-card-compact" data-reveal-item>
-                <div class="code-card-video-wrap">
-                  <video class="code-card-img code-card__video" poster="assets/codes/sustainability.jpg" data-video-src="assets/code-videos/sustainability.mp4" muted loop playsinline preload="none" aria-label="Sustainability Code animation"></video>
-                </div>
+                <img class="code-card-img" src="assets/codes/sustainability.jpg" alt="Sustainability Code" loading="lazy" />
                 <p class="code-index font-mono">09</p>
                 <h3>Sustainability Code</h3>
                 <p class="compound-line compound-shimmer font-mono">Glutathione · B12</p>
@@ -495,7 +504,7 @@
     <script src="./js/scroll-animations.js" defer></script>
     <script src="./js/hero-animation.js" defer></script>
     <script src="./js/path-choreography.js" defer></script>
-    <script src="./js/video-playback.js" defer></script>
+    <!-- <script src="./js/video-playback.js" defer></script> -->
     <script src="./js/main.js" defer></script>
   </body>
 </html>
