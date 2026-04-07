@@ -4,64 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QIRA | Physician-Led Peptide Optimization</title>
-    <meta
-      name="description"
-      content="QIRA is a premium physician-led peptide optimization concept built around codes, labs, and protocol-led care."
-    />
+    <meta name="description" content="QIRA is a premium physician-led peptide optimization concept built around codes, labs, and protocol-led care." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      window.tailwind = {
-        config: {
-          theme: {
-            extend: {
-              colors: {
-                bg: "var(--color-bg)",
-                "bg-elevated": "var(--color-bg-elevated)",
-                surface: "var(--color-bg-surface)",
-                "text-primary": "var(--color-text-primary)",
-                "text-secondary": "var(--color-text-secondary)",
-                "text-tertiary": "var(--color-text-tertiary)",
-                gold: "var(--color-accent-gold)",
-                silver: "var(--color-accent-silver)",
-                bio: "var(--color-accent-bio)",
-                border: "var(--color-border)",
-                "border-subtle": "var(--color-border-subtle)"
-              },
-              fontFamily: {
-                sans: ['"Instrument Sans"', "ui-sans-serif", "sans-serif"],
-                display: ['"Instrument Serif"', "ui-serif", "serif"],
-                mono: ['"JetBrains Mono"', "ui-monospace", "monospace"]
-              }
-            }
-          }
-        }
-      };
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/tokens.css" />
-    <!-- <link rel="stylesheet" href="./css/video-styles.css" /> -->
   </head>
-  <body class="bg-bg font-sans text-text-primary">
-    <!-- Password Gate -->
-    <div id="password-gate" style="position:fixed;inset:0;z-index:9999;background:oklch(97% 0.015 90);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;overflow:hidden;">
-      <!-- Grain texture overlay -->
-      <div style="position:absolute;inset:0;opacity:0.04;background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);pointer-events:none;"></div>
-      <!-- Warm radial glow -->
-      <div style="position:absolute;top:-20%;right:-10%;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle,oklch(80% 0.08 80 / 0.15),transparent 70%);filter:blur(60px);pointer-events:none;"></div>
-      <div style="position:absolute;bottom:-15%;left:-5%;width:45%;height:45%;border-radius:50%;background:radial-gradient(circle,oklch(70% 0.05 25 / 0.1),transparent 70%);filter:blur(50px);pointer-events:none;"></div>
-      <p style="font-family:'Instrument Serif',serif;font-size:clamp(3.5rem,6vw,6rem);color:oklch(20% 0.02 60);letter-spacing:0.12em;font-weight:500;position:relative;">QIRA</p>
-      <div style="width:3rem;height:2px;background:oklch(75% 0.08 80);opacity:0.5;position:relative;"></div>
-      <p style="font-size:0.85rem;color:oklch(52% 0.04 75);letter-spacing:0.12em;text-transform:uppercase;font-weight:600;position:relative;">Enter access code</p>
-      <form id="gate-form" style="display:flex;gap:0.75rem;align-items:center;position:relative;" onsubmit="return checkGate()">
-        <input id="gate-input" type="password" autocomplete="off" placeholder="••••••••" style="font-family:'JetBrains Mono',monospace;font-size:1rem;padding:0.85rem 1.4rem;border:1px solid oklch(88% 0.01 60);border-radius:8px;background:oklch(99% 0.005 90);color:oklch(20% 0.02 60);outline:none;width:220px;transition:border-color 0.2s,box-shadow 0.2s;" onfocus="this.style.borderColor='oklch(75% 0.08 80)';this.style.boxShadow='0 0 0 3px oklch(75% 0.08 80 / 0.12)'" onblur="this.style.borderColor='oklch(88% 0.01 60)';this.style.boxShadow='none'" />
-        <button type="submit" style="font-family:'Instrument Sans',sans-serif;font-size:0.85rem;font-weight:600;padding:0.85rem 1.8rem;background:oklch(20% 0.02 60);color:oklch(97% 0.015 90);border:none;border-radius:8px;cursor:pointer;letter-spacing:0.06em;transition:opacity 0.2s,transform 0.2s;" onmouseover="this.style.opacity='0.85';this.style.transform='translateY(-1px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">Enter</button>
-      </form>
-      <p id="gate-error" style="font-size:0.8rem;color:oklch(55% 0.15 25);opacity:0;transition:opacity 0.3s;position:relative;">Incorrect code</p>
+  <body>
+    <!-- ═══════════════ PASSWORD GATE ═══════════════ -->
+    <div id="password-gate" class="gate">
+      <div class="gate-bg">
+        <img src="assets/site-images/gate-bg.png" alt="" />
+      </div>
+      <div class="gate-content">
+        <p class="gate-logo">QIRA</p>
+        <div class="gate-rule"></div>
+        <p class="gate-label">Enter access code</p>
+        <form id="gate-form" class="gate-form" onsubmit="return checkGate()">
+          <input id="gate-input" type="password" autocomplete="off" placeholder="••••••••" class="gate-input" />
+          <button type="submit" class="gate-btn">Enter</button>
+        </form>
+        <p id="gate-error" class="gate-error">Incorrect code</p>
+      </div>
     </div>
     <script>
       (function(){
@@ -71,7 +35,9 @@
         var v=document.getElementById('gate-input').value;
         if(v==='qira2026'){
           sessionStorage.setItem('qira_auth','1');
-          document.getElementById('password-gate').style.display='none';
+          var g=document.getElementById('password-gate');
+          g.style.opacity='0';
+          setTimeout(function(){g.style.display='none';},600);
         }else{
           document.getElementById('gate-error').style.opacity='1';
           document.getElementById('gate-input').value='';
@@ -80,449 +46,306 @@
         return false;
       }
     </script>
-    <!-- Decorative background blobs -->
-    <div aria-hidden="true" style="position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;">
-      <svg style="position:absolute;top:5%;right:-5%;width:50vw;height:50vw;max-width:600px;max-height:600px;opacity:0.06;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="oklch(75% 0.08 80)" d="M45.3,-62.5C57.4,-54.2,64.8,-38.5,69.2,-22.3C73.6,-6.1,75.1,10.7,69.4,24.8C63.7,38.9,50.9,50.4,36.8,58.8C22.7,67.2,7.3,72.5,-8.2,72.3C-23.7,72.1,-39.2,66.5,-51.2,56.4C-63.1,46.3,-71.4,31.8,-74.3,16.1C-77.2,0.4,-74.7,-16.5,-66.5,-29.5C-58.3,-42.5,-44.4,-51.6,-30.5,-59C-16.7,-66.3,-2.8,-71.9,9.8,-69.8C22.4,-67.7,33.2,-70.9,45.3,-62.5Z" transform="translate(100 100)"/>
-      </svg>
-      <svg style="position:absolute;bottom:10%;left:-8%;width:40vw;height:40vw;max-width:500px;max-height:500px;opacity:0.05;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="oklch(68% 0.04 25)" d="M39.5,-51.1C52.9,-45.2,66.7,-36.5,72.1,-23.8C77.5,-11.1,74.5,5.7,67.4,19.2C60.3,32.7,49.1,42.9,36.7,51.6C24.3,60.3,10.7,67.5,-3.5,71.1C-17.7,74.7,-32.4,74.7,-43.5,67.1C-54.6,59.5,-62.1,44.2,-66.8,28.6C-71.5,13,-73.5,-2.9,-69.7,-17.1C-65.9,-31.3,-56.3,-43.8,-44.1,-50.1C-31.9,-56.3,-17.1,-56.3,-2.1,-53.5C12.9,-50.7,26.1,-57,39.5,-51.1Z" transform="translate(100 100)"/>
-      </svg>
-      <svg style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60vw;height:60vw;max-width:700px;max-height:700px;opacity:0.03;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill="oklch(75% 0.08 80)" d="M42.7,-55.5C55.3,-49.8,65,-36.1,70.5,-20.8C76,-5.5,77.3,11.4,71.1,25.2C64.9,39,51.2,49.7,36.7,57.1C22.2,64.5,6.9,68.6,-8.1,67.3C-23.1,66,-37.8,59.3,-49.6,49C-61.4,38.7,-70.3,24.8,-73.5,9.3C-76.7,-6.2,-74.2,-23.3,-65.1,-35.3C-56,-47.3,-40.3,-54.2,-25.7,-58.9C-11.1,-63.6,2.4,-66.1,16.2,-64.4C30,-62.7,30.1,-61.2,42.7,-55.5Z" transform="translate(100 100)"/>
-      </svg>
-    </div>
-    <div class="site-shell">
-      <header id="site-header" class="site-header">
-        <div class="section-container flex flex-wrap items-center justify-between gap-4 py-6">
-          <a href="#hero" class="logo-mark font-display text-[1.4rem] uppercase text-text-primary">QIRA</a>
-          <nav class="flex items-center gap-5 text-sm text-text-secondary">
-            <a href="#codes" class="nav-link">Codes</a>
-            <a href="#physician" class="nav-link">Physician</a>
-            <a href="#process" class="nav-link">Process</a>
-          </nav>
-          <a href="#process" class="cta-button">Begin</a>
-        </div>
-        <div class="scroll-progress" aria-hidden="true">
-          <div class="scroll-progress-bar"></div>
-        </div>
-      </header>
 
-      <main>
-        <section id="hero" class="section-padding">
-          <div class="section-container hero-grid">
-            <div class="hero-copy">
-              <p class="section-label" data-hero-reveal="fade">Protocol-Led Performance</p>
-              <h1 class="hero-title" data-hero-reveal="rise">Your biology, rewritten.</h1>
-              <p class="hero-lead prose" data-hero-reveal="fade">
-                Physician-designed peptide protocols built on labs, oversight, and nine precision codes.
-              </p>
-              <div class="hero-actions mt-10 flex flex-wrap items-center gap-4" data-hero-reveal="rise">
-                <a href="#codes" class="cta-button">Explore The Codes</a>
-                <a href="#physician" class="secondary-link">Meet The Physician</a>
-              </div>
-              <div class="hero-meta mt-12" data-hero-reveal="fade">
-                <div>
-                  <span class="meta-label">Approach</span>
-                  <p>Labs first. Protocol second. No shortcuts.</p>
-                </div>
-                <div>
-                  <span class="meta-label">Format</span>
-                  <p><span class="font-mono">CODE-01</span> to <span class="font-mono">CODE-09</span> delivery bundles.</p>
-                </div>
-              </div>
-            </div>
-            <div class="hero-animation" aria-hidden="true">
-              <div class="hero-corner-marks" aria-hidden="true"></div>
-            </div>
-          </div>
-        </section>
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#hero" class="header-logo">QIRA</a>
+        <nav class="header-nav">
+          <a href="#codes">Codes</a>
+          <a href="#physician">Physician</a>
+          <a href="#process">Process</a>
+        </nav>
+        <a href="#process" class="pill-cta pill-cta--dark">Begin Your Protocol</a>
+      </div>
+    </header>
 
-        <section id="codes" class="section-divider section-divider-strand">
-          <div class="strand-divider" aria-hidden="true">
-            <span class="strand-signal"></span>
-            <svg
-              class="strand-divider-svg"
-              viewBox="0 0 1200 24"
-              preserveAspectRatio="xMidYMid meet"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line class="strand-base" x1="0" y1="12" x2="1200" y2="12" />
-              <line class="strand-base-depth" x1="0" y1="13" x2="1200" y2="13" />
-              <circle class="strand-node" cx="96" cy="12" r="2.5" style="--strand-delay: 0ms"></circle>
-              <circle class="strand-node" cx="280" cy="12" r="2.2" style="--strand-delay: 100ms"></circle>
-              <circle class="strand-node" cx="488" cy="12" r="2.8" style="--strand-delay: 200ms"></circle>
-              <circle class="strand-node" cx="712" cy="12" r="2.5" style="--strand-delay: 310ms"></circle>
-              <circle class="strand-node" cx="908" cy="12" r="2.3" style="--strand-delay: 420ms"></circle>
-              <circle class="strand-node" cx="1104" cy="12" r="2.6" style="--strand-delay: 530ms"></circle>
-            </svg>
+    <main>
+      <!-- ═══════════════ HERO — FULL BLEED IMAGE ═══════════════ -->
+      <section id="hero" class="hero">
+        <div class="hero-img-wrap">
+          <img src="assets/site-images/hero.png" alt="Luxury wellness environment" class="hero-img" />
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+          <p class="hero-tag">Physician-Led Peptide Optimization</p>
+          <h1 class="hero-title">Your biology,<br/>elevated.</h1>
+          <p class="hero-sub">Nine precision protocols. One physician. A new standard in peptide-led performance — built on labs, clinical oversight, and uncompromising care.</p>
+          <div class="hero-ctas">
+            <a href="#codes" class="pill-cta">Explore The Codes</a>
+            <a href="#physician" class="pill-cta pill-cta--outline">Meet The Physician</a>
           </div>
-          <div class="section-container section-padding">
-            <div class="max-w-[42rem]">
-              <p class="section-label" data-reveal="fade">The Codes</p>
-              <h2 data-reveal="heading">Nine protocols. One physician. Zero commodity shortcuts.</h2>
-              <p class="prose text-text-secondary" data-reveal="text">
-                Each code is a curated compound protocol, designed around a specific optimization goal and delivered
-                only under physician oversight.
-              </p>
-            </div>
-            <div class="path-overlay path-overlay--inline" data-path-group aria-hidden="true">
-              <svg class="path-overlay-svg path-overlay-svg--codes" viewBox="0 0 800 40" preserveAspectRatio="none">
-                <path
-                  data-draw-path
-                  data-draw-delay="100"
-                  class="svg-path svg-path--accent"
-                  d="M 0,20 L 120,20 L 140,8 L 160,32 L 180,8 L 200,32 L 220,20 L 800,20"
-                />
-              </svg>
-            </div>
-            <div class="codes-row codes-featured mt-12" data-reveal="group" data-reveal-group>
-              <article class="code-card code-card-featured" data-reveal-item>
-                <img class="code-card-img" src="assets/codes/glow.jpg" alt="Glow Code" loading="lazy" />
-                <p class="code-index font-mono">01</p>
+        </div>
+      </section>
+
+      <!-- ═══════════════ BRAND INTRO — IMAGE LEFT / TEXT RIGHT ═══════════════ -->
+      <section class="split-section">
+        <div class="split-inner">
+          <div class="split-image">
+            <img src="assets/site-images/brand.png" alt="QIRA glass vial on marble surface" loading="lazy" />
+          </div>
+          <div class="split-text">
+            <p class="section-tag">The Philosophy</p>
+            <h2 class="section-heading">Precision is not a feature.<br/>It is the entire point.</h2>
+            <p class="section-body">QIRA was conceived at the intersection of clinical endocrinology and considered design — a rejection of the commodity peptide market in favor of something more deliberate, more accountable, more beautiful.</p>
+            <p class="section-body">Every protocol begins with comprehensive labs and physician review. Every compound is selected with intention. Every interaction is designed to feel as premium as the science behind it.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ FULL-WIDTH IMAGE BREAK ═══════════════ -->
+      <section class="image-break">
+        <img src="assets/site-images/labs.png" alt="Premium laboratory setting" loading="lazy" />
+        <div class="image-break-overlay">
+          <p class="image-break-text">Where clinical discipline meets bespoke care</p>
+        </div>
+      </section>
+
+      <!-- ═══════════════ THE CODES ═══════════════ -->
+      <section id="codes" class="codes-section">
+        <div class="container">
+          <div class="codes-header">
+            <p class="section-tag">The Nine Codes</p>
+            <h2 class="section-heading">Each code is a curated protocol —<br/>designed around a single optimization goal.</h2>
+            <p class="section-body mw-prose">Not a menu. Not a marketplace. Nine physician-designed compound sequences, each anchored in clinical evidence and delivered under continuous medical oversight.</p>
+          </div>
+
+          <!-- Featured codes (large) -->
+          <div class="codes-featured">
+            <article class="code-card code-card--lg">
+              <div class="code-card-img-wrap"><img src="assets/codes/glow.jpg" alt="Glow Code" loading="lazy" /></div>
+              <div class="code-card-body">
+                <span class="code-num">01</span>
                 <h3>Glow Code</h3>
-                <p class="compound-line compound-shimmer font-mono">GHK-Cu · NAD+</p>
-                <p>Skin-forward optimization with a polished, restorative protocol.</p>
-              </article>
-              <article class="code-card code-card-featured" data-reveal-item>
-                <img class="code-card-img" src="assets/codes/weight.jpg" alt="Weight Code" loading="lazy" />
-                <p class="code-index font-mono">02</p>
+                <p class="code-compound">GHK-Cu · NAD+</p>
+                <p>Radiance from within — a restorative protocol for skin luminosity, elasticity, and cellular renewal.</p>
+              </div>
+            </article>
+            <article class="code-card code-card--lg">
+              <div class="code-card-img-wrap"><img src="assets/codes/weight.jpg" alt="Weight Code" loading="lazy" /></div>
+              <div class="code-card-body">
+                <span class="code-num">02</span>
                 <h3>Weight Code</h3>
-                <p class="compound-line compound-shimmer font-mono">GLP-1 · MIC</p>
-                <p>Physician-supervised composition support, not a quick-fix refill.</p>
-              </article>
-            </div>
-            <div class="codes-row codes-primary mt-4" data-reveal="group" data-reveal-group>
-              <article class="code-card" data-reveal-item>
-                <img class="code-card-img" src="assets/codes/performance.jpg" alt="Performance Code" loading="lazy" />
-                <p class="code-index font-mono">03</p>
+                <p class="code-compound">GLP-1 · MIC</p>
+                <p>Physician-supervised body composition — metabolic recalibration, not a quick-fix refill.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Primary codes (medium) -->
+          <div class="codes-primary">
+            <article class="code-card">
+              <div class="code-card-img-wrap"><img src="assets/codes/performance.jpg" alt="Performance Code" loading="lazy" /></div>
+              <div class="code-card-body">
+                <span class="code-num">03</span>
                 <h3>Performance Code</h3>
-                <p class="compound-line compound-shimmer font-mono">CJC-1295 · Ipamorelin</p>
-                <p>Output and recovery calibrated through growth-hormone signaling.</p>
-              </article>
-              <article class="code-card" data-reveal-item>
-                <img class="code-card-img" src="assets/codes/recovery.jpg" alt="Recovery Code" loading="lazy" />
-                <p class="code-index font-mono">04</p>
+                <p class="code-compound">CJC-1295 · Ipamorelin</p>
+                <p>Output and recovery calibrated through precision growth-hormone signaling.</p>
+              </div>
+            </article>
+            <article class="code-card">
+              <div class="code-card-img-wrap"><img src="assets/codes/recovery.jpg" alt="Recovery Code" loading="lazy" /></div>
+              <div class="code-card-body">
+                <span class="code-num">04</span>
                 <h3>Recovery Code</h3>
-                <p class="compound-line compound-shimmer font-mono">BPC-157 · TB-500</p>
-                <p>Resilience support with careful dosing and physician oversight.</p>
-              </article>
-              <article class="code-card" data-reveal-item>
-                <img class="code-card-img" src="assets/codes/longevity.jpg" alt="Longevity Code" loading="lazy" />
-                <p class="code-index font-mono">05</p>
+                <p class="code-compound">BPC-157 · TB-500</p>
+                <p>Deep tissue resilience — repair and regeneration under careful clinical guidance.</p>
+              </div>
+            </article>
+            <article class="code-card">
+              <div class="code-card-img-wrap"><img src="assets/codes/longevity.jpg" alt="Longevity Code" loading="lazy" /></div>
+              <div class="code-card-body">
+                <span class="code-num">05</span>
                 <h3>Longevity Code</h3>
-                <p class="compound-line compound-shimmer font-mono">Epithalon · NAD+</p>
-                <p>Cellular maintenance framed as long-horizon protocol, not anti-aging hype.</p>
-              </article>
-            </div>
-            <div class="codes-row codes-supporting mt-4" data-reveal="group" data-reveal-group>
-              <article class="code-card code-card-compact" data-reveal-item>
-                <img class="code-card-img" src="assets/codes/hormone.jpg" alt="Hormone Code" loading="lazy" />
-                <p class="code-index font-mono">06</p>
+                <p class="code-compound">Epithalon · NAD+</p>
+                <p>Cellular preservation as long-horizon strategy — not anti-aging promises, but biological stewardship.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Supporting codes (compact) -->
+          <div class="codes-supporting">
+            <article class="code-card code-card--sm">
+              <div class="code-card-img-wrap"><img src="assets/codes/hormone.jpg" alt="Hormone Code" loading="lazy" /></div>
+              <div class="code-card-body">
+                <span class="code-num">06</span>
                 <h3>Hormone Code</h3>
-                <p class="compound-line compound-shimmer font-mono">Enclomiphene · DHEA</p>
-                <p>Endocrine balance anchored in lab work and physician review.</p>
-              </article>
-              <article class="code-card code-card-compact" data-reveal-item>
-                <img class="code-card-img" src="assets/codes/focus.jpg" alt="Focus Code" loading="lazy" />
-                <p class="code-index font-mono">07</p>
+                <p class="code-compound">Enclomiphene · DHEA</p>
+                <p>Endocrine equilibrium anchored in lab work and physician judgment.</p>
+              </div>
+            </article>
+            <article class="code-card code-card--sm">
+              <div class="code-card-img-wrap"><img src="assets/codes/focus.jpg" alt="Focus Code" loading="lazy" /></div>
+              <div class="code-card-body">
+                <span class="code-num">07</span>
                 <h3>Focus Code</h3>
-                <p class="compound-line compound-shimmer font-mono">Semax · Selank</p>
-                <p>Cognitive clarity support through neuropeptide protocols.</p>
-              </article>
-              <article class="code-card code-card-compact" data-reveal-item>
-                <img class="code-card-img" src="assets/codes/sleep.jpg" alt="Sleep Code" loading="lazy" />
-                <p class="code-index font-mono">08</p>
+                <p class="code-compound">Semax · Selank</p>
+                <p>Cognitive clarity through neuropeptide protocols — sharp, sustained, and physician-directed.</p>
+              </div>
+            </article>
+            <article class="code-card code-card--sm">
+              <div class="code-card-img-wrap"><img src="assets/codes/sleep.jpg" alt="Sleep Code" loading="lazy" /></div>
+              <div class="code-card-body">
+                <span class="code-num">08</span>
                 <h3>Sleep Code</h3>
-                <p class="compound-line compound-shimmer font-mono">DSIP · Glycine</p>
-                <p>Restorative sleep architecture support, not sedation.</p>
-              </article>
-              <article class="code-card code-card-compact" data-reveal-item>
-                <img class="code-card-img" src="assets/codes/sustainability.jpg" alt="Sustainability Code" loading="lazy" />
-                <p class="code-index font-mono">09</p>
+                <p class="code-compound">DSIP · Glycine</p>
+                <p>Restorative sleep architecture — rebuilding the foundation, not masking the deficit.</p>
+              </div>
+            </article>
+            <article class="code-card code-card--sm">
+              <div class="code-card-img-wrap"><img src="assets/codes/sustainability.jpg" alt="Sustainability Code" loading="lazy" /></div>
+              <div class="code-card-body">
+                <span class="code-num">09</span>
                 <h3>Sustainability Code</h3>
-                <p class="compound-line compound-shimmer font-mono">Glutathione · B12</p>
-                <p>Foundational support for energy and metabolic consistency.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <div class="path-overlay" data-path-group data-path-progress aria-hidden="true">
-          <svg class="path-overlay-svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path
-              data-draw-path
-              data-draw-delay="0"
-              class="svg-path svg-path--connector"
-              d="M 0,60 C 200,10 400,110 600,60 C 800,10 1000,110 1200,60"
-            />
-            <path
-              data-draw-path
-              data-draw-delay="200"
-              class="svg-path svg-path--connector-accent"
-              d="M 0,62 C 200,14 400,108 600,62 C 800,16 1000,108 1200,62"
-            />
-          </svg>
-        </div>
-
-        <section id="physician" class="section-divider section-divider-strand">
-          <div class="strand-divider" aria-hidden="true">
-            <span class="strand-signal"></span>
-            <svg
-              class="strand-divider-svg"
-              viewBox="0 0 1200 24"
-              preserveAspectRatio="xMidYMid meet"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line class="strand-base" x1="0" y1="12" x2="1200" y2="12" />
-              <line class="strand-base-depth" x1="0" y1="13" x2="1200" y2="13" />
-              <circle class="strand-node" cx="148" cy="12" r="2.6" style="--strand-delay: 0ms"></circle>
-              <circle class="strand-node" cx="396" cy="12" r="2.3" style="--strand-delay: 130ms"></circle>
-              <circle class="strand-node" cx="600" cy="12" r="2.8" style="--strand-delay: 260ms"></circle>
-              <circle class="strand-node" cx="804" cy="12" r="2.4" style="--strand-delay: 380ms"></circle>
-              <circle class="strand-node" cx="1056" cy="12" r="2.5" style="--strand-delay: 500ms"></circle>
-            </svg>
-          </div>
-          <div class="section-container section-padding">
-            <div class="path-overlay path-overlay--physician" data-path-group aria-hidden="true">
-              <svg class="path-overlay-svg path-overlay-svg--physician" viewBox="0 0 100 400" preserveAspectRatio="none">
-                <path
-                  data-draw-path
-                  data-draw-delay="300"
-                  class="svg-path svg-path--flow"
-                  d="M 50,0 C 20,80 80,160 50,240 C 20,320 80,380 50,400"
-                />
-              </svg>
-            </div>
-            <div class="grid-2 items-center gap-10">
-              <div class="physician-frame physician-frame-accent" data-reveal="scale">
-                <img
-                  class="physician-portrait"
-                  src="assets/doctor-upscaled.jpg"
-                  alt="Portrait of Dr. Clifton Jackness"
-                  loading="lazy"
-                  decoding="async"
-                  onerror="this.onerror=null; this.parentElement.classList.add('physician-frame--no-image');"
-                />
-                <div class="physician-fallback" role="img" aria-label="Portrait placeholder for Dr. Clifton Jackness">
-                  <span class="physician-initials font-mono" aria-hidden="true">CJ</span>
-                  <p class="font-mono text-sm text-text-tertiary">assets/doctor-upscaled.jpg</p>
-                </div>
+                <p class="code-compound">Glutathione · B12</p>
+                <p>The metabolic bedrock — energy consistency and detoxification, day after day.</p>
               </div>
-              <div>
-                <p class="section-label" data-reveal="fade">Your Physician</p>
-                <h2 data-reveal="heading">Park Avenue endocrinology, applied to performance.</h2>
-                <p class="prose text-text-secondary" data-reveal="text">
-                  Dr. Clifton Jackness anchors QIRA with the clinical discipline of Park Avenue endocrinology. The
-                  experience is built to feel bespoke, measured, and physician-led from the first review forward.
-                </p>
-                <p class="prose mt-5 text-text-secondary" data-reveal="text">
-                  Every code starts with labs, medical judgment, and deliberate adjustment. No auto-refills. No
-                  algorithm prescribing. No shortcuts dressed up as convenience.
-                </p>
-                <div class="physician-credentials mt-10" data-reveal="fade">
-                  <div>
-                    <span class="meta-label">Specialty</span>
-                    <p>Endocrinology-led optimization</p>
-                  </div>
-                  <div>
-                    <span class="meta-label">Setting</span>
-                    <p>Park Avenue, New York</p>
-                  </div>
-                  <div>
-                    <span class="meta-label">System</span>
-                    <p>Labs first, protocol led</p>
-                  </div>
-                  <div>
-                    <span class="meta-label">Oversight</span>
-                    <p>Every code, every adjustment</p>
-                  </div>
-                </div>
-                <blockquote class="physician-quote mt-10" data-reveal="text">
-                  <p>Optimization should be supervised, not self-prescribed.</p>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="process" class="section-divider section-divider-strand">
-          <div class="strand-divider" aria-hidden="true">
-            <span class="strand-signal"></span>
-            <svg
-              class="strand-divider-svg"
-              viewBox="0 0 1200 24"
-              preserveAspectRatio="xMidYMid meet"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line class="strand-base" x1="0" y1="12" x2="1200" y2="12" />
-              <line class="strand-base-depth" x1="0" y1="13" x2="1200" y2="13" />
-              <circle class="strand-node" cx="72" cy="12" r="2.3" style="--strand-delay: 0ms"></circle>
-              <circle class="strand-node" cx="216" cy="12" r="2.5" style="--strand-delay: 80ms"></circle>
-              <circle class="strand-node" cx="384" cy="12" r="2.2" style="--strand-delay: 160ms"></circle>
-              <circle class="strand-node" cx="540" cy="12" r="2.7" style="--strand-delay: 240ms"></circle>
-              <circle class="strand-node" cx="696" cy="12" r="2.4" style="--strand-delay: 330ms"></circle>
-              <circle class="strand-node" cx="876" cy="12" r="2.6" style="--strand-delay: 420ms"></circle>
-              <circle class="strand-node" cx="1068" cy="12" r="2.3" style="--strand-delay: 510ms"></circle>
-            </svg>
-          </div>
-          <div class="section-container section-padding">
-            <div class="process-scene" data-scene data-process-progress>
-              <div class="max-w-[38rem]">
-                <p class="section-label" data-reveal="fade" data-scene-order="0">Our Process</p>
-                <h2 data-reveal="heading" data-scene-order="1">From labs to protocol in four deliberate steps.</h2>
-              </div>
-              <div class="process-scroll-meter" aria-hidden="true">
-                <div class="process-scroll-numbers">
-                  <span class="process-scroll-current" data-process-current>01</span>
-                  <span class="process-scroll-divider"></span>
-                  <span class="process-scroll-total">04</span>
-                </div>
-                <div class="process-scroll-track">
-                  <span class="process-scroll-fill"></span>
-                </div>
-              </div>
-              <div class="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4" data-reveal="group" data-reveal-group>
-                <article class="process-step" data-reveal-item data-scene-order="2" data-process-step="1">
-                  <span class="process-index font-mono">01</span>
-                  <h3>Labs</h3>
-                  <p>
-                    Comprehensive bloodwork and metabolic panels set the direction. Nothing is prescribed from a
-                    questionnaire.
-                  </p>
-                </article>
-                <article class="process-step" data-reveal-item data-scene-order="3" data-process-step="2">
-                  <span class="process-index font-mono">02</span>
-                  <h3>Consult</h3>
-                  <p>
-                    A one-on-one physician review connects your goals, history, and lab markers into a clear protocol
-                    path.
-                  </p>
-                </article>
-                <article class="process-step" data-reveal-item data-scene-order="4" data-process-step="3">
-                  <span class="process-index font-mono">03</span>
-                  <h3>Code</h3>
-                  <p>
-                    Your protocol is assembled as a precision code, a curated compound sequence designed around your
-                    specific markers.
-                  </p>
-                </article>
-                <article class="process-step" data-reveal-item data-scene-order="5" data-process-step="4">
-                  <span class="process-index font-mono">04</span>
-                  <h3>Consistency</h3>
-                  <p>
-                    Ongoing labs, physician check-ins, and protocol refinements keep the system accountable to your
-                    biology.
-                  </p>
-                </article>
-              </div>
-              <p class="prose mt-12 max-w-[42rem] text-text-secondary" data-reveal="text" data-scene-order="6">
-                No step exists without the one before it. That's the point.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div class="path-overlay" data-path-group data-path-progress aria-hidden="true">
-          <svg class="path-overlay-svg path-overlay-svg--process-connector" viewBox="0 0 1200 100" preserveAspectRatio="none">
-            <path
-              data-draw-path
-              data-draw-delay="0"
-              class="svg-path svg-path--connector"
-              d="M 0,50 Q 300,10 600,50 Q 900,90 1200,50"
-            />
-          </svg>
-        </div>
-
-        <section id="difference" class="section-divider section-divider-strand">
-          <div class="strand-divider" aria-hidden="true">
-            <span class="strand-signal"></span>
-            <svg
-              class="strand-divider-svg"
-              viewBox="0 0 1200 24"
-              preserveAspectRatio="xMidYMid meet"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line class="strand-base" x1="0" y1="12" x2="1200" y2="12" />
-              <line class="strand-base-depth" x1="0" y1="13" x2="1200" y2="13" />
-              <circle class="strand-node" cx="128" cy="12" r="2.4" style="--strand-delay: 0ms"></circle>
-              <circle class="strand-node" cx="332" cy="12" r="2.7" style="--strand-delay: 110ms"></circle>
-              <circle class="strand-node" cx="520" cy="12" r="2.3" style="--strand-delay: 220ms"></circle>
-              <circle class="strand-node" cx="688" cy="12" r="2.5" style="--strand-delay: 340ms"></circle>
-              <circle class="strand-node" cx="880" cy="12" r="2.8" style="--strand-delay: 450ms"></circle>
-              <circle class="strand-node" cx="1076" cy="12" r="2.4" style="--strand-delay: 560ms"></circle>
-            </svg>
-          </div>
-          <div class="section-container section-padding">
-            <div class="grid-2 gap-10">
-              <div>
-                <p class="section-label" data-reveal="fade">Why QIRA</p>
-                <h2 data-reveal="heading">Luxury performance language, backed by medical precision.</h2>
-              </div>
-              <div class="difference-list" data-reveal="group" data-reveal-group>
-                <article data-reveal-item>
-                  <h3>Protocol over trend</h3>
-                  <p>Your protocol is a designed sequence, not a reaction to whatever compound is trending this quarter.</p>
-                </article>
-                <article data-reveal-item>
-                  <h3>Authority over hype</h3>
-                  <p>A board-certified endocrinologist reviews every code. That's the trust model, not testimonials, not before-and-afters.</p>
-                </article>
-                <article data-reveal-item>
-                  <h3>Design over sameness</h3>
-                  <p>From the first interaction to ongoing care, the experience is built to match the precision of the medicine.</p>
-                </article>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer id="site-footer" class="section-divider">
-        <div class="section-container footer-content">
-          <div class="footer-upper" data-reveal="fade">
-            <div>
-              <p class="logo-mark font-display text-[1.15rem] uppercase text-text-primary">QIRA</p>
-              <p class="prose mt-4 text-sm text-text-secondary">
-                Physician-led peptide optimization, built around labs, codes, and clinical oversight.
-              </p>
-            </div>
-            <nav class="footer-nav" aria-label="Footer navigation">
-              <a href="#codes" class="nav-link">Codes</a>
-              <a href="#physician" class="nav-link">Physician</a>
-              <a href="#process" class="nav-link">Process</a>
-              <a href="#hero" class="nav-link">Top</a>
-            </nav>
-          </div>
-          <div class="footer-compliance" data-reveal="text">
-            <p>
-              These products have not been evaluated by the Food and Drug Administration and are not intended to
-              diagnose, treat, cure, or prevent any disease.
-            </p>
-            <p>
-              All protocols require physician review, lab assessment, and ongoing clinical oversight. Protocol
-              availability varies by state and is subject to physician determination of clinical appropriateness.
-            </p>
-            <p>
-              Compounded medications are prepared by state-licensed pharmacies in accordance with applicable federal
-              and state regulations.
-            </p>
-          </div>
-          <div class="footer-bottom">
-            <p>© 2026 QIRA. Concept presentation - final offerings subject to regulatory review.</p>
+            </article>
           </div>
         </div>
-      </footer>
-    </div>
+      </section>
+
+      <!-- ═══════════════ BIOLOGY IMAGE BREAK ═══════════════ -->
+      <section class="image-break">
+        <img src="assets/site-images/biology.png" alt="Molecular science imagery" loading="lazy" />
+        <div class="image-break-overlay">
+          <p class="image-break-text">Built on science. Delivered with intention.</p>
+        </div>
+      </section>
+
+      <!-- ═══════════════ PHYSICIAN — TEXT LEFT / IMAGE RIGHT ═══════════════ -->
+      <section id="physician" class="split-section split-section--reverse">
+        <div class="split-inner">
+          <div class="split-text">
+            <p class="section-tag">Your Physician</p>
+            <h2 class="section-heading">Park Avenue endocrinology,<br/>applied to performance.</h2>
+            <p class="section-body">Dr. Clifton Jackness anchors QIRA with the clinical discipline of board-certified endocrinology. The experience is built to feel bespoke, measured, and physician-led from the first review forward.</p>
+            <p class="section-body">Every code starts with labs, medical judgment, and deliberate adjustment. No auto-refills. No algorithm prescribing. No shortcuts dressed up as convenience.</p>
+            <div class="physician-meta">
+              <div class="meta-item">
+                <span class="meta-label">Specialty</span>
+                <p>Endocrinology-led optimization</p>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Setting</span>
+                <p>Park Avenue, New York</p>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">System</span>
+                <p>Labs first, protocol led</p>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Oversight</span>
+                <p>Every code, every adjustment</p>
+              </div>
+            </div>
+            <blockquote class="pull-quote">"Optimization should be supervised, not self-prescribed."</blockquote>
+          </div>
+          <div class="split-image">
+            <img src="assets/doctor-upscaled.jpg" alt="Portrait of Dr. Clifton Jackness" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ CONSULT IMAGE BREAK ═══════════════ -->
+      <section class="image-break">
+        <img src="assets/site-images/consult.png" alt="Physician consultation" loading="lazy" />
+        <div class="image-break-overlay">
+          <p class="image-break-text">Every protocol begins with a conversation</p>
+        </div>
+      </section>
+
+      <!-- ═══════════════ PROCESS ═══════════════ -->
+      <section id="process" class="process-section">
+        <div class="container">
+          <div class="process-header">
+            <p class="section-tag">The Process</p>
+            <h2 class="section-heading">Four deliberate steps.<br/>Nothing skipped. Nothing assumed.</h2>
+          </div>
+          <div class="process-grid">
+            <article class="process-card">
+              <span class="process-num">01</span>
+              <h3>Labs</h3>
+              <p>Comprehensive bloodwork and metabolic panels set the direction. Nothing is prescribed from a questionnaire — your biology speaks first.</p>
+            </article>
+            <article class="process-card">
+              <span class="process-num">02</span>
+              <h3>Consult</h3>
+              <p>A one-on-one physician review connects your goals, history, and lab markers into a clear, personalized protocol path.</p>
+            </article>
+            <article class="process-card">
+              <span class="process-num">03</span>
+              <h3>Code</h3>
+              <p>Your protocol is assembled as a precision code — a curated compound sequence designed around your unique biological markers.</p>
+            </article>
+            <article class="process-card">
+              <span class="process-num">04</span>
+              <h3>Continuity</h3>
+              <p>Ongoing labs, physician check-ins, and protocol refinements keep the system accountable to your evolving biology.</p>
+            </article>
+          </div>
+          <p class="process-footnote">No step exists without the one before it. That's the point.</p>
+        </div>
+      </section>
+
+      <!-- ═══════════════ DIFFERENCE — WITH SIDE IMAGE ═══════════════ -->
+      <section class="split-section">
+        <div class="split-inner">
+          <div class="split-image">
+            <img src="assets/site-images/difference.png" alt="Luxury medical instruments" loading="lazy" />
+          </div>
+          <div class="split-text">
+            <p class="section-tag">Why QIRA</p>
+            <h2 class="section-heading">Not another peptide clinic.<br/>A new category entirely.</h2>
+            <div class="diff-list">
+              <div class="diff-item">
+                <h3>Protocol over trend</h3>
+                <p>Your protocol is a designed sequence — not a reaction to whatever compound is trending this quarter.</p>
+              </div>
+              <div class="diff-item">
+                <h3>Authority over hype</h3>
+                <p>A board-certified endocrinologist reviews every code. That's the trust model — not testimonials, not before-and-afters.</p>
+              </div>
+              <div class="diff-item">
+                <h3>Design over sameness</h3>
+                <p>From the first interaction to ongoing care, the experience is built to match the precision of the medicine.</p>
+              </div>
+            </div>
+            <a href="#process" class="pill-cta" style="margin-top:2.5rem;">Start Your Journey</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-upper">
+          <div>
+            <p class="footer-logo">QIRA</p>
+            <p class="footer-tagline">Physician-led peptide optimization — built around labs, codes, and clinical oversight.</p>
+          </div>
+          <nav class="footer-nav">
+            <a href="#codes">Codes</a>
+            <a href="#physician">Physician</a>
+            <a href="#process">Process</a>
+            <a href="#hero">Top</a>
+          </nav>
+        </div>
+        <div class="footer-legal">
+          <p>These products have not been evaluated by the Food and Drug Administration and are not intended to diagnose, treat, cure, or prevent any disease.</p>
+          <p>All protocols require physician review, lab assessment, and ongoing clinical oversight. Protocol availability varies by state and is subject to physician determination of clinical appropriateness.</p>
+          <p>Compounded medications are prepared by state-licensed pharmacies in accordance with applicable federal and state regulations.</p>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 QIRA. Concept presentation &mdash; final offerings subject to regulatory review.</p>
+        </div>
+      </div>
+    </footer>
 
     <script src="./js/scroll-animations.js" defer></script>
     <script src="./js/hero-animation.js" defer></script>
     <script src="./js/path-choreography.js" defer></script>
-    <!-- <script src="./js/video-playback.js" defer></script> -->
     <script src="./js/main.js" defer></script>
   </body>
 </html>
