@@ -1,351 +1,351 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QIRA | Physician-Led Peptide Optimization</title>
-    <meta name="description" content="QIRA is a premium physician-led peptide optimization concept built around codes, labs, and protocol-led care." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/tokens.css" />
-  </head>
-  <body>
-    <!-- ═══════════════ PASSWORD GATE ═══════════════ -->
-    <div id="password-gate" class="gate">
-      <div class="gate-bg">
-        <img src="assets/site-images/gate-bg.png" alt="" />
-      </div>
-      <div class="gate-content">
-        <p class="gate-logo">QIRA</p>
-        <div class="gate-rule"></div>
-        <p class="gate-label">Enter access code</p>
-        <form id="gate-form" class="gate-form" onsubmit="return checkGate()">
-          <input id="gate-input" type="password" autocomplete="off" placeholder="••••••••" class="gate-input" />
-          <button type="submit" class="gate-btn">Enter</button>
-        </form>
-        <p id="gate-error" class="gate-error">Incorrect code</p>
-      </div>
-    </div>
-    <script>
-      (function(){
-        if(sessionStorage.getItem('qira_auth')==='1'){document.getElementById('password-gate').style.display='none';}
-      })();
-      function checkGate(){
-        var v=document.getElementById('gate-input').value;
-        if(v==='qira2026'){
-          sessionStorage.setItem('qira_auth','1');
-          var g=document.getElementById('password-gate');
-          g.style.opacity='0';
-          setTimeout(function(){g.style.display='none';},600);
-        }else{
-          document.getElementById('gate-error').style.opacity='1';
-          document.getElementById('gate-input').value='';
-          setTimeout(function(){document.getElementById('gate-error').style.opacity='0';},2000);
-        }
-        return false;
-      }
-    </script>
-
-    <!-- ═══════════════ HEADER ═══════════════ -->
-    <header class="site-header">
-      <div class="header-inner">
-        <a href="#hero" class="header-logo">QIRA</a>
-        <nav class="header-nav">
-          <a href="#codes">Codes</a>
-          <a href="#physician">Physician</a>
-          <a href="#process">Process</a>
-        </nav>
-        <a href="#process" class="pill-cta pill-cta--dark">Begin Your Protocol</a>
-      </div>
-    </header>
-
-    <main>
-      <!-- ═══════════════ HERO — FULL BLEED IMAGE ═══════════════ -->
-      <section id="hero" class="hero">
-        <div class="hero-img-wrap">
-          <img src="assets/site-images/hero.png" alt="Luxury wellness environment" class="hero-img" />
-          <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-content">
-          <p class="hero-tag">Physician-Led Peptide Optimization</p>
-          <h1 class="hero-title">Your biology,<br/>elevated.</h1>
-          <p class="hero-sub">Nine precision protocols. One physician. A new standard in peptide-led performance — built on labs, clinical oversight, and uncompromising care.</p>
-          <div class="hero-ctas">
-            <a href="#codes" class="pill-cta">Explore The Codes</a>
-            <a href="#physician" class="pill-cta pill-cta--outline">Meet The Physician</a>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ BRAND INTRO — IMAGE LEFT / TEXT RIGHT ═══════════════ -->
-      <section class="split-section">
-        <div class="split-inner">
-          <div class="split-image">
-            <img src="assets/site-images/brand.png" alt="QIRA glass vial on marble surface" loading="lazy" />
-          </div>
-          <div class="split-text">
-            <p class="section-tag">The Philosophy</p>
-            <h2 class="section-heading">Precision is not a feature.<br/>It is the entire point.</h2>
-            <p class="section-body">QIRA was conceived at the intersection of clinical endocrinology and considered design — a rejection of the commodity peptide market in favor of something more deliberate, more accountable, more beautiful.</p>
-            <p class="section-body">Every protocol begins with comprehensive labs and physician review. Every compound is selected with intention. Every interaction is designed to feel as premium as the science behind it.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ FULL-WIDTH IMAGE BREAK ═══════════════ -->
-      <section class="image-break">
-        <img src="assets/site-images/labs.png" alt="Premium laboratory setting" loading="lazy" />
-        <div class="image-break-overlay">
-          <p class="image-break-text">Where clinical discipline meets bespoke care</p>
-        </div>
-      </section>
-
-      <!-- ═══════════════ THE CODES ═══════════════ -->
-      <section id="codes" class="codes-section">
-        <div class="container">
-          <div class="codes-header">
-            <p class="section-tag">The Nine Codes</p>
-            <h2 class="section-heading">Each code is a curated protocol —<br/>designed around a single optimization goal.</h2>
-            <p class="section-body mw-prose">Not a menu. Not a marketplace. Nine physician-designed compound sequences, each anchored in clinical evidence and delivered under continuous medical oversight.</p>
-          </div>
-
-          <!-- Featured codes (large) -->
-          <div class="codes-featured">
-            <article class="code-card code-card--lg">
-              <div class="code-card-img-wrap"><img src="assets/codes/glow.jpg" alt="Glow Code" loading="lazy" /></div>
-              <div class="code-card-body">
-                <span class="code-num">01</span>
-                <h3>Glow Code</h3>
-                <p class="code-compound">GHK-Cu · NAD+</p>
-                <p>Radiance from within — a restorative protocol for skin luminosity, elasticity, and cellular renewal.</p>
-              </div>
-            </article>
-            <article class="code-card code-card--lg">
-              <div class="code-card-img-wrap"><img src="assets/codes/weight.jpg" alt="Weight Code" loading="lazy" /></div>
-              <div class="code-card-body">
-                <span class="code-num">02</span>
-                <h3>Weight Code</h3>
-                <p class="code-compound">GLP-1 · MIC</p>
-                <p>Physician-supervised body composition — metabolic recalibration, not a quick-fix refill.</p>
-              </div>
-            </article>
-          </div>
-
-          <!-- Primary codes (medium) -->
-          <div class="codes-primary">
-            <article class="code-card">
-              <div class="code-card-img-wrap"><img src="assets/codes/performance.jpg" alt="Performance Code" loading="lazy" /></div>
-              <div class="code-card-body">
-                <span class="code-num">03</span>
-                <h3>Performance Code</h3>
-                <p class="code-compound">CJC-1295 · Ipamorelin</p>
-                <p>Output and recovery calibrated through precision growth-hormone signaling.</p>
-              </div>
-            </article>
-            <article class="code-card">
-              <div class="code-card-img-wrap"><img src="assets/codes/recovery.jpg" alt="Recovery Code" loading="lazy" /></div>
-              <div class="code-card-body">
-                <span class="code-num">04</span>
-                <h3>Recovery Code</h3>
-                <p class="code-compound">BPC-157 · TB-500</p>
-                <p>Deep tissue resilience — repair and regeneration under careful clinical guidance.</p>
-              </div>
-            </article>
-            <article class="code-card">
-              <div class="code-card-img-wrap"><img src="assets/codes/longevity.jpg" alt="Longevity Code" loading="lazy" /></div>
-              <div class="code-card-body">
-                <span class="code-num">05</span>
-                <h3>Longevity Code</h3>
-                <p class="code-compound">Epithalon · NAD+</p>
-                <p>Cellular preservation as long-horizon strategy — not anti-aging promises, but biological stewardship.</p>
-              </div>
-            </article>
-          </div>
-
-          <!-- Supporting codes (compact) -->
-          <div class="codes-supporting">
-            <article class="code-card code-card--sm">
-              <div class="code-card-img-wrap"><img src="assets/codes/hormone.jpg" alt="Hormone Code" loading="lazy" /></div>
-              <div class="code-card-body">
-                <span class="code-num">06</span>
-                <h3>Hormone Code</h3>
-                <p class="code-compound">Enclomiphene · DHEA</p>
-                <p>Endocrine equilibrium anchored in lab work and physician judgment.</p>
-              </div>
-            </article>
-            <article class="code-card code-card--sm">
-              <div class="code-card-img-wrap"><img src="assets/codes/focus.jpg" alt="Focus Code" loading="lazy" /></div>
-              <div class="code-card-body">
-                <span class="code-num">07</span>
-                <h3>Focus Code</h3>
-                <p class="code-compound">Semax · Selank</p>
-                <p>Cognitive clarity through neuropeptide protocols — sharp, sustained, and physician-directed.</p>
-              </div>
-            </article>
-            <article class="code-card code-card--sm">
-              <div class="code-card-img-wrap"><img src="assets/codes/sleep.jpg" alt="Sleep Code" loading="lazy" /></div>
-              <div class="code-card-body">
-                <span class="code-num">08</span>
-                <h3>Sleep Code</h3>
-                <p class="code-compound">DSIP · Glycine</p>
-                <p>Restorative sleep architecture — rebuilding the foundation, not masking the deficit.</p>
-              </div>
-            </article>
-            <article class="code-card code-card--sm">
-              <div class="code-card-img-wrap"><img src="assets/codes/sustainability.jpg" alt="Sustainability Code" loading="lazy" /></div>
-              <div class="code-card-body">
-                <span class="code-num">09</span>
-                <h3>Sustainability Code</h3>
-                <p class="code-compound">Glutathione · B12</p>
-                <p>The metabolic bedrock — energy consistency and detoxification, day after day.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ BIOLOGY IMAGE BREAK ═══════════════ -->
-      <section class="image-break">
-        <img src="assets/site-images/biology.png" alt="Molecular science imagery" loading="lazy" />
-        <div class="image-break-overlay">
-          <p class="image-break-text">Built on science. Delivered with intention.</p>
-        </div>
-      </section>
-
-      <!-- ═══════════════ PHYSICIAN — TEXT LEFT / IMAGE RIGHT ═══════════════ -->
-      <section id="physician" class="split-section split-section--reverse">
-        <div class="split-inner">
-          <div class="split-text">
-            <p class="section-tag">Your Physician</p>
-            <h2 class="section-heading">Park Avenue endocrinology,<br/>applied to performance.</h2>
-            <p class="section-body">Dr. Clifton Jackness anchors QIRA with the clinical discipline of board-certified endocrinology. The experience is built to feel bespoke, measured, and physician-led from the first review forward.</p>
-            <p class="section-body">Every code starts with labs, medical judgment, and deliberate adjustment. No auto-refills. No algorithm prescribing. No shortcuts dressed up as convenience.</p>
-            <div class="physician-meta">
-              <div class="meta-item">
-                <span class="meta-label">Specialty</span>
-                <p>Endocrinology-led optimization</p>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">Setting</span>
-                <p>Park Avenue, New York</p>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">System</span>
-                <p>Labs first, protocol led</p>
-              </div>
-              <div class="meta-item">
-                <span class="meta-label">Oversight</span>
-                <p>Every code, every adjustment</p>
-              </div>
-            </div>
-            <blockquote class="pull-quote">"Optimization should be supervised, not self-prescribed."</blockquote>
-          </div>
-          <div class="split-image">
-            <img src="assets/doctor-upscaled.jpg" alt="Portrait of Dr. Clifton Jackness" loading="lazy" />
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ CONSULT IMAGE BREAK ═══════════════ -->
-      <section class="image-break">
-        <img src="assets/site-images/consult.png" alt="Physician consultation" loading="lazy" />
-        <div class="image-break-overlay">
-          <p class="image-break-text">Every protocol begins with a conversation</p>
-        </div>
-      </section>
-
-      <!-- ═══════════════ PROCESS ═══════════════ -->
-      <section id="process" class="process-section">
-        <div class="container">
-          <div class="process-header">
-            <p class="section-tag">The Process</p>
-            <h2 class="section-heading">Four deliberate steps.<br/>Nothing skipped. Nothing assumed.</h2>
-          </div>
-          <div class="process-grid">
-            <article class="process-card">
-              <span class="process-num">01</span>
-              <h3>Labs</h3>
-              <p>Comprehensive bloodwork and metabolic panels set the direction. Nothing is prescribed from a questionnaire — your biology speaks first.</p>
-            </article>
-            <article class="process-card">
-              <span class="process-num">02</span>
-              <h3>Consult</h3>
-              <p>A one-on-one physician review connects your goals, history, and lab markers into a clear, personalized protocol path.</p>
-            </article>
-            <article class="process-card">
-              <span class="process-num">03</span>
-              <h3>Code</h3>
-              <p>Your protocol is assembled as a precision code — a curated compound sequence designed around your unique biological markers.</p>
-            </article>
-            <article class="process-card">
-              <span class="process-num">04</span>
-              <h3>Continuity</h3>
-              <p>Ongoing labs, physician check-ins, and protocol refinements keep the system accountable to your evolving biology.</p>
-            </article>
-          </div>
-          <p class="process-footnote">No step exists without the one before it. That's the point.</p>
-        </div>
-      </section>
-
-      <!-- ═══════════════ DIFFERENCE — WITH SIDE IMAGE ═══════════════ -->
-      <section class="split-section">
-        <div class="split-inner">
-          <div class="split-image">
-            <img src="assets/site-images/difference.png" alt="Luxury medical instruments" loading="lazy" />
-          </div>
-          <div class="split-text">
-            <p class="section-tag">Why QIRA</p>
-            <h2 class="section-heading">Not another peptide clinic.<br/>A new category entirely.</h2>
-            <div class="diff-list">
-              <div class="diff-item">
-                <h3>Protocol over trend</h3>
-                <p>Your protocol is a designed sequence — not a reaction to whatever compound is trending this quarter.</p>
-              </div>
-              <div class="diff-item">
-                <h3>Authority over hype</h3>
-                <p>A board-certified endocrinologist reviews every code. That's the trust model — not testimonials, not before-and-afters.</p>
-              </div>
-              <div class="diff-item">
-                <h3>Design over sameness</h3>
-                <p>From the first interaction to ongoing care, the experience is built to match the precision of the medicine.</p>
-              </div>
-            </div>
-            <a href="#process" class="pill-cta" style="margin-top:2.5rem;">Start Your Journey</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- ═══════════════ FOOTER ═══════════════ -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-upper">
-          <div>
-            <p class="footer-logo">QIRA</p>
-            <p class="footer-tagline">Physician-led peptide optimization — built around labs, codes, and clinical oversight.</p>
-          </div>
-          <nav class="footer-nav">
-            <a href="#codes">Codes</a>
-            <a href="#physician">Physician</a>
-            <a href="#process">Process</a>
-            <a href="#hero">Top</a>
-          </nav>
-        </div>
-        <div class="footer-legal">
-          <p>These products have not been evaluated by the Food and Drug Administration and are not intended to diagnose, treat, cure, or prevent any disease.</p>
-          <p>All protocols require physician review, lab assessment, and ongoing clinical oversight. Protocol availability varies by state and is subject to physician determination of clinical appropriateness.</p>
-          <p>Compounded medications are prepared by state-licensed pharmacies in accordance with applicable federal and state regulations.</p>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 QIRA. Concept presentation &mdash; final offerings subject to regulatory review.</p>
-        </div>
-      </div>
-    </footer>
-
-    <script src="./js/scroll-animations.js" defer></script>
-    <script src="./js/hero-animation.js" defer></script>
-    <script src="./js/path-choreography.js" defer></script>
-    <script src="./js/main.js" defer></script>
-  </body>
-</html>
+     1|     1|<!DOCTYPE html>
+     2|     2|<html lang="en">
+     3|     3|  <head>
+     4|     4|    <meta charset="UTF-8" />
+     5|     5|    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     6|     6|    <title>QIRA | Physician Led Peptide Optimization</title>
+     7|     7|    <meta name="description" content="QIRA is a premium physician-led peptide optimization concept built around codes, labs, and protocol-led care." />
+     8|     8|    <link rel="preconnect" href="https://fonts.googleapis.com" />
+     9|     9|    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    10|    10|    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    11|    11|    <link rel="stylesheet" href="./css/tokens.css" />
+    12|    12|  </head>
+    13|    13|  <body>
+    14|    14|    <!-- ═══════════════ PASSWORD GATE ═══════════════ -->
+    15|    15|    <div id="password-gate" class="gate">
+    16|    16|      <div class="gate-bg">
+    17|    17|        <img src="assets/site-images/gate-bg.png" alt="" />
+    18|    18|      </div>
+    19|    19|      <div class="gate-content">
+    20|    20|        <p class="gate-logo">QIRA</p>
+    21|    21|        <div class="gate-rule"></div>
+    22|    22|        <p class="gate-label">Enter access code</p>
+    23|    23|        <form id="gate-form" class="gate-form" onsubmit="return checkGate()">
+    24|    24|          <input id="gate-input" type="password" autocomplete="off" placeholder="••••••••" class="gate-input" />
+    25|    25|          <button type="submit" class="gate-btn">Enter</button>
+    26|    26|        </form>
+    27|    27|        <p id="gate-error" class="gate-error">Incorrect code</p>
+    28|    28|      </div>
+    29|    29|    </div>
+    30|    30|    <script>
+    31|    31|      (function(){
+    32|    32|        if(sessionStorage.getItem('qira_auth')==='1'){document.getElementById('password-gate').style.display='none';}
+    33|    33|      })();
+    34|    34|      function checkGate(){
+    35|    35|        var v=document.getElementById('gate-input').value;
+    36|    36|        if(v==='qira2026'){
+    37|    37|          sessionStorage.setItem('qira_auth','1');
+    38|    38|          var g=document.getElementById('password-gate');
+    39|    39|          g.style.opacity='0';
+    40|    40|          setTimeout(function(){g.style.display='none';},600);
+    41|    41|        }else{
+    42|    42|          document.getElementById('gate-error').style.opacity='1';
+    43|    43|          document.getElementById('gate-input').value='';
+    44|    44|          setTimeout(function(){document.getElementById('gate-error').style.opacity='0';},2000);
+    45|    45|        }
+    46|    46|        return false;
+    47|    47|      }
+    48|    48|    </script>
+    49|    49|
+    50|    50|    <!-- ═══════════════ HEADER ═══════════════ -->
+    51|    51|    <header class="site-header">
+    52|    52|      <div class="header-inner">
+    53|    53|        <a href="#hero" class="header-logo">QIRA</a>
+    54|    54|        <nav class="header-nav">
+    55|    55|          <a href="#codes">Codes</a>
+    56|    56|          <a href="#physician">Physician</a>
+    57|    57|          <a href="#process">Process</a>
+    58|    58|        </nav>
+    59|    59|        <a href="#process" class="pill-cta pill-cta--dark">Begin Your Protocol</a>
+    60|    60|      </div>
+    61|    61|    </header>
+    62|    62|
+    63|    63|    <main>
+    64|    64|      <!-- ═══════════════ HERO — FULL BLEED IMAGE ═══════════════ -->
+    65|    65|      <section id="hero" class="hero">
+    66|    66|        <div class="hero-img-wrap">
+    67|    67|          <img src="assets/site-images/hero.png" alt="Luxury wellness environment" class="hero-img" />
+    68|    68|          <div class="hero-overlay"></div>
+    69|    69|        </div>
+    70|    70|        <div class="hero-content">
+    71|    71|          <p class="hero-tag">Physician Led Peptide Optimization</p>
+    72|    72|          <h1 class="hero-title">Your biology,<br/>elevated.</h1>
+    73|    73|          <p class="hero-sub">Nine precision protocols. One physician. A new standard in peptide led performance, built on labs, clinical oversight, and uncompromising care.</p>
+    74|    74|          <div class="hero-ctas">
+    75|    75|            <a href="#codes" class="pill-cta">Explore The Codes</a>
+    76|    76|            <a href="#physician" class="pill-cta pill-cta--outline">Meet The Physician</a>
+    77|    77|          </div>
+    78|    78|        </div>
+    79|    79|      </section>
+    80|    80|
+    81|    81|      <!-- ═══════════════ BRAND INTRO — IMAGE LEFT / TEXT RIGHT ═══════════════ -->
+    82|    82|      <section class="split-section">
+    83|    83|        <div class="split-inner">
+    84|    84|          <div class="split-image">
+    85|    85|            <img src="assets/site-images/brand.png" alt="QIRA glass vial on marble surface" loading="lazy" />
+    86|    86|          </div>
+    87|    87|          <div class="split-text">
+    88|    88|            <p class="section-tag">The Philosophy</p>
+    89|    89|            <h2 class="section-heading">Precision is not a feature.<br/>It is the entire point.</h2>
+    90|    90|            <p class="section-body">QIRA was born where clinical endocrinology meets considered design. A rejection of the commodity peptide market in favor of something more deliberate, more accountable, more beautiful.</p>
+    91|    91|            <p class="section-body">Every protocol begins with comprehensive labs and physician review. Every compound is selected with intention. Every interaction is designed to feel as premium as the science behind it.</p>
+    92|    92|          </div>
+    93|    93|        </div>
+    94|    94|      </section>
+    95|    95|
+    96|    96|      <!-- ═══════════════ FULL-WIDTH IMAGE BREAK ═══════════════ -->
+    97|    97|      <section class="image-break">
+    98|    98|        <img src="assets/site-images/labs.png" alt="Premium laboratory setting" loading="lazy" />
+    99|    99|        <div class="image-break-overlay">
+   100|   100|          <p class="image-break-text">Where clinical discipline meets bespoke care</p>
+   101|   101|        </div>
+   102|   102|      </section>
+   103|   103|
+   104|   104|      <!-- ═══════════════ THE CODES ═══════════════ -->
+   105|   105|      <section id="codes" class="codes-section">
+   106|   106|        <div class="container">
+   107|   107|          <div class="codes-header">
+   108|   108|            <p class="section-tag">The Nine Codes</p>
+   109|   109|            <h2 class="section-heading">Each code is a curated protocol<br/>designed around a single optimization goal.</h2>
+   110|   110|            <p class="section-body mw-prose">Not a menu. Not a marketplace. Nine physician designed compound sequences, each anchored in clinical evidence and delivered under continuous medical oversight.</p>
+   111|   111|          </div>
+   112|   112|
+   113|   113|          <!-- Featured codes (large) -->
+   114|   114|          <div class="codes-featured">
+   115|   115|            <article class="code-card code-card--lg">
+   116|   116|              <div class="code-card-img-wrap"><img src="assets/codes/glow.jpg" alt="Glow Code" loading="lazy" /></div>
+   117|   117|              <div class="code-card-body">
+   118|   118|                <span class="code-num">01</span>
+   119|   119|                <h3>Glow Code</h3>
+   120|   120|                <p class="code-compound">GHK-Cu · NAD+</p>
+   121|   121|                <p>Radiance from within. A restorative protocol for skin luminosity, elasticity, and cellular renewal.</p>
+   122|   122|              </div>
+   123|   123|            </article>
+   124|   124|            <article class="code-card code-card--lg">
+   125|   125|              <div class="code-card-img-wrap"><img src="assets/codes/weight.jpg" alt="Weight Code" loading="lazy" /></div>
+   126|   126|              <div class="code-card-body">
+   127|   127|                <span class="code-num">02</span>
+   128|   128|                <h3>Weight Code</h3>
+   129|   129|                <p class="code-compound">GLP-1 · MIC</p>
+   130|   130|                <p>Physician supervised body composition. Metabolic recalibration, not a quick fix refill.</p>
+   131|   131|              </div>
+   132|   132|            </article>
+   133|   133|          </div>
+   134|   134|
+   135|   135|          <!-- Primary codes (medium) -->
+   136|   136|          <div class="codes-primary">
+   137|   137|            <article class="code-card">
+   138|   138|              <div class="code-card-img-wrap"><img src="assets/codes/performance.jpg" alt="Performance Code" loading="lazy" /></div>
+   139|   139|              <div class="code-card-body">
+   140|   140|                <span class="code-num">03</span>
+   141|   141|                <h3>Performance Code</h3>
+   142|   142|                <p class="code-compound">CJC-1295 · Ipamorelin</p>
+   143|   143|                <p>Output and recovery calibrated through precision growth hormone signaling.</p>
+   144|   144|              </div>
+   145|   145|            </article>
+   146|   146|            <article class="code-card">
+   147|   147|              <div class="code-card-img-wrap"><img src="assets/codes/recovery.jpg" alt="Recovery Code" loading="lazy" /></div>
+   148|   148|              <div class="code-card-body">
+   149|   149|                <span class="code-num">04</span>
+   150|   150|                <h3>Recovery Code</h3>
+   151|   151|                <p class="code-compound">BPC-157 · TB-500</p>
+   152|   152|                <p>Deep tissue resilience. Repair and regeneration under careful clinical guidance.</p>
+   153|   153|              </div>
+   154|   154|            </article>
+   155|   155|            <article class="code-card">
+   156|   156|              <div class="code-card-img-wrap"><img src="assets/codes/longevity.jpg" alt="Longevity Code" loading="lazy" /></div>
+   157|   157|              <div class="code-card-body">
+   158|   158|                <span class="code-num">05</span>
+   159|   159|                <h3>Longevity Code</h3>
+   160|   160|                <p class="code-compound">Epithalon · NAD+</p>
+   161|   161|                <p>Cellular preservation as a long horizon strategy. Not anti aging promises, but biological stewardship.</p>
+   162|   162|              </div>
+   163|   163|            </article>
+   164|   164|          </div>
+   165|   165|
+   166|   166|          <!-- Supporting codes (compact) -->
+   167|   167|          <div class="codes-supporting">
+   168|   168|            <article class="code-card code-card--sm">
+   169|   169|              <div class="code-card-img-wrap"><img src="assets/codes/hormone.jpg" alt="Hormone Code" loading="lazy" /></div>
+   170|   170|              <div class="code-card-body">
+   171|   171|                <span class="code-num">06</span>
+   172|   172|                <h3>Hormone Code</h3>
+   173|   173|                <p class="code-compound">Enclomiphene · DHEA</p>
+   174|   174|                <p>Endocrine equilibrium anchored in lab work and physician judgment.</p>
+   175|   175|              </div>
+   176|   176|            </article>
+   177|   177|            <article class="code-card code-card--sm">
+   178|   178|              <div class="code-card-img-wrap"><img src="assets/codes/focus.jpg" alt="Focus Code" loading="lazy" /></div>
+   179|   179|              <div class="code-card-body">
+   180|   180|                <span class="code-num">07</span>
+   181|   181|                <h3>Focus Code</h3>
+   182|   182|                <p class="code-compound">Semax · Selank</p>
+   183|   183|                <p>Cognitive clarity through neuropeptide protocols. Sharp, sustained, and physician directed.</p>
+   184|   184|              </div>
+   185|   185|            </article>
+   186|   186|            <article class="code-card code-card--sm">
+   187|   187|              <div class="code-card-img-wrap"><img src="assets/codes/sleep.jpg" alt="Sleep Code" loading="lazy" /></div>
+   188|   188|              <div class="code-card-body">
+   189|   189|                <span class="code-num">08</span>
+   190|   190|                <h3>Sleep Code</h3>
+   191|   191|                <p class="code-compound">DSIP · Glycine</p>
+   192|   192|                <p>Restorative sleep architecture. Rebuilding the foundation, not masking the deficit.</p>
+   193|   193|              </div>
+   194|   194|            </article>
+   195|   195|            <article class="code-card code-card--sm">
+   196|   196|              <div class="code-card-img-wrap"><img src="assets/codes/sustainability.jpg" alt="Sustainability Code" loading="lazy" /></div>
+   197|   197|              <div class="code-card-body">
+   198|   198|                <span class="code-num">09</span>
+   199|   199|                <h3>Sustainability Code</h3>
+   200|   200|                <p class="code-compound">Glutathione · B12</p>
+   201|   201|                <p>The metabolic bedrock. Energy consistency and detoxification, day after day.</p>
+   202|   202|              </div>
+   203|   203|            </article>
+   204|   204|          </div>
+   205|   205|        </div>
+   206|   206|      </section>
+   207|   207|
+   208|   208|      <!-- ═══════════════ BIOLOGY IMAGE BREAK ═══════════════ -->
+   209|   209|      <section class="image-break">
+   210|   210|        <img src="assets/site-images/biology.png" alt="Molecular science imagery" loading="lazy" />
+   211|   211|        <div class="image-break-overlay">
+   212|   212|          <p class="image-break-text">Built on science. Delivered with intention.</p>
+   213|   213|        </div>
+   214|   214|      </section>
+   215|   215|
+   216|   216|      <!-- ═══════════════ PHYSICIAN — TEXT LEFT / IMAGE RIGHT ═══════════════ -->
+   217|   217|      <section id="physician" class="split-section split-section--reverse">
+   218|   218|        <div class="split-inner">
+   219|   219|          <div class="split-text">
+   220|   220|            <p class="section-tag">Your Physician</p>
+   221|   221|            <h2 class="section-heading">Park Avenue endocrinology,<br/>applied to performance.</h2>
+   222|   222|            <p class="section-body">Dr. Clifton Jackness anchors QIRA with the clinical discipline of board certified endocrinology. The experience is built to feel bespoke, measured, and physician led from the very first review.</p>
+   223|   223|            <p class="section-body">Every code starts with labs, medical judgment, and deliberate adjustment. No auto refills. No algorithm prescribing. No shortcuts dressed up as convenience.</p>
+   224|   224|            <div class="physician-meta">
+   225|   225|              <div class="meta-item">
+   226|   226|                <span class="meta-label">Specialty</span>
+   227|   227|                <p>Endocrinology led optimization</p>
+   228|   228|              </div>
+   229|   229|              <div class="meta-item">
+   230|   230|                <span class="meta-label">Setting</span>
+   231|   231|                <p>Park Avenue, New York</p>
+   232|   232|              </div>
+   233|   233|              <div class="meta-item">
+   234|   234|                <span class="meta-label">System</span>
+   235|   235|                <p>Labs first, protocol led</p>
+   236|   236|              </div>
+   237|   237|              <div class="meta-item">
+   238|   238|                <span class="meta-label">Oversight</span>
+   239|   239|                <p>Every code, every adjustment</p>
+   240|   240|              </div>
+   241|   241|            </div>
+   242|   242|            <blockquote class="pull-quote">"Optimization should be supervised, not self prescribed."</blockquote>
+   243|   243|          </div>
+   244|   244|          <div class="split-image">
+   245|   245|            <img src="assets/doctor-upscaled.jpg" alt="Portrait of Dr. Clifton Jackness" loading="lazy" />
+   246|   246|          </div>
+   247|   247|        </div>
+   248|   248|      </section>
+   249|   249|
+   250|   250|      <!-- ═══════════════ CONSULT IMAGE BREAK ═══════════════ -->
+   251|   251|      <section class="image-break">
+   252|   252|        <img src="assets/site-images/consult.png" alt="Physician consultation" loading="lazy" />
+   253|   253|        <div class="image-break-overlay">
+   254|   254|          <p class="image-break-text">Every protocol begins with a conversation</p>
+   255|   255|        </div>
+   256|   256|      </section>
+   257|   257|
+   258|   258|      <!-- ═══════════════ PROCESS ═══════════════ -->
+   259|   259|      <section id="process" class="process-section">
+   260|   260|        <div class="container">
+   261|   261|          <div class="process-header">
+   262|   262|            <p class="section-tag">The Process</p>
+   263|   263|            <h2 class="section-heading">Four deliberate steps.<br/>Nothing skipped. Nothing assumed.</h2>
+   264|   264|          </div>
+   265|   265|          <div class="process-grid">
+   266|   266|            <article class="process-card">
+   267|   267|              <span class="process-num">01</span>
+   268|   268|              <h3>Labs</h3>
+   269|   269|              <p>Comprehensive bloodwork and metabolic panels set the direction. Nothing is prescribed from a questionnaire. Your biology speaks first.</p>
+   270|   270|            </article>
+   271|   271|            <article class="process-card">
+   272|   272|              <span class="process-num">02</span>
+   273|   273|              <h3>Consult</h3>
+   274|   274|              <p>A one on one physician review connects your goals, history, and lab markers into a clear, personalized protocol path.</p>
+   275|   275|            </article>
+   276|   276|            <article class="process-card">
+   277|   277|              <span class="process-num">03</span>
+   278|   278|              <h3>Code</h3>
+   279|   279|              <p>Your protocol is assembled as a precision code. A curated compound sequence designed around your unique biological markers.</p>
+   280|   280|            </article>
+   281|   281|            <article class="process-card">
+   282|   282|              <span class="process-num">04</span>
+   283|   283|              <h3>Continuity</h3>
+   284|   284|              <p>Ongoing labs, physician check ins, and protocol refinements keep the system accountable to your evolving biology.</p>
+   285|   285|            </article>
+   286|   286|          </div>
+   287|   287|          <p class="process-footnote">No step exists without the one before it. That's the point.</p>
+   288|   288|        </div>
+   289|   289|      </section>
+   290|   290|
+   291|   291|      <!-- ═══════════════ DIFFERENCE — WITH SIDE IMAGE ═══════════════ -->
+   292|   292|      <section class="split-section">
+   293|   293|        <div class="split-inner">
+   294|   294|          <div class="split-image">
+   295|   295|            <img src="assets/site-images/difference.png" alt="Luxury medical instruments" loading="lazy" />
+   296|   296|          </div>
+   297|   297|          <div class="split-text">
+   298|   298|            <p class="section-tag">Why QIRA</p>
+   299|   299|            <h2 class="section-heading">Not another peptide clinic.<br/>A new category entirely.</h2>
+   300|   300|            <div class="diff-list">
+   301|   301|              <div class="diff-item">
+   302|   302|                <h3>Protocol over trend</h3>
+   303|   303|                <p>Your protocol is a designed sequence, not a reaction to whatever compound is trending this quarter.</p>
+   304|   304|              </div>
+   305|   305|              <div class="diff-item">
+   306|   306|                <h3>Authority over hype</h3>
+   307|   307|                <p>A board certified endocrinologist reviews every code. That's the trust model. Not testimonials, not before and afters.</p>
+   308|   308|              </div>
+   309|   309|              <div class="diff-item">
+   310|   310|                <h3>Design over sameness</h3>
+   311|   311|                <p>From the first interaction to ongoing care, the experience is built to match the precision of the medicine.</p>
+   312|   312|              </div>
+   313|   313|            </div>
+   314|   314|            <a href="#process" class="pill-cta" style="margin-top:2.5rem;">Start Your Journey</a>
+   315|   315|          </div>
+   316|   316|        </div>
+   317|   317|      </section>
+   318|   318|    </main>
+   319|   319|
+   320|   320|    <!-- ═══════════════ FOOTER ═══════════════ -->
+   321|   321|    <footer class="site-footer">
+   322|   322|      <div class="container">
+   323|   323|        <div class="footer-upper">
+   324|   324|          <div>
+   325|   325|            <p class="footer-logo">QIRA</p>
+   326|   326|            <p class="footer-tagline">Physician led peptide optimization built around labs, codes, and clinical oversight.</p>
+   327|   327|          </div>
+   328|   328|          <nav class="footer-nav">
+   329|   329|            <a href="#codes">Codes</a>
+   330|   330|            <a href="#physician">Physician</a>
+   331|   331|            <a href="#process">Process</a>
+   332|   332|            <a href="#hero">Top</a>
+   333|   333|          </nav>
+   334|   334|        </div>
+   335|   335|        <div class="footer-legal">
+   336|   336|          <p>These products have not been evaluated by the Food and Drug Administration and are not intended to diagnose, treat, cure, or prevent any disease.</p>
+   337|   337|          <p>All protocols require physician review, lab assessment, and ongoing clinical oversight. Protocol availability varies by state and is subject to physician determination of clinical appropriateness.</p>
+   338|   338|          <p>Compounded medications are prepared by state licensed pharmacies in accordance with applicable federal and state regulations.</p>
+   339|   339|        </div>
+   340|   340|        <div class="footer-bottom">
+   341|   341|          <p>&copy; 2026 QIRA. Concept presentation. Final offerings subject to regulatory review.</p>
+   342|   342|        </div>
+   343|   343|      </div>
+   344|   344|    </footer>
+   345|   345|
+   346|   346|    <script src="./js/scroll-animations.js" defer></script>
+   347|   347|    <script src="./js/hero-animation.js" defer></script>
+   348|   348|    <script src="./js/path-choreography.js" defer></script>
+   349|   349|    <script src="./js/main.js" defer></script>
+   350|   350|  </body>
+   351|   351|</html>
