@@ -1,15 +1,15 @@
 :root {
-  --color-bg: oklch(97% 0.015 90);
-  --color-bg-elevated: oklch(94% 0.02 85);
-  --color-bg-surface: oklch(99% 0.005 90);
-  --color-text-primary: oklch(20% 0.02 60);
-  --color-text-secondary: oklch(35% 0.02 60);
-  --color-text-tertiary: oklch(52% 0.04 75);
-  --color-accent-gold: oklch(75% 0.08 80);
-  --color-accent-silver: oklch(68% 0.06 65);
-  --color-accent-bio: oklch(68% 0.04 25);
-  --color-border: oklch(88% 0.01 60);
-  --color-border-subtle: oklch(90% 0.015 70);
+  --color-bg: oklch(16% 0.01 60);
+  --color-bg-elevated: oklch(21% 0.012 65);
+  --color-bg-surface: oklch(23% 0.014 70);
+  --color-text-primary: oklch(93% 0.015 80);
+  --color-text-secondary: oklch(70% 0.02 70);
+  --color-text-tertiary: oklch(55% 0.03 75);
+  --color-accent-gold: oklch(80% 0.12 80);
+  --color-accent-silver: oklch(72% 0.07 65);
+  --color-accent-bio: oklch(72% 0.06 25);
+  --color-border: oklch(27% 0.015 60);
+  --color-border-subtle: oklch(25% 0.01 70);
 
   --text-xs: clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
   --text-sm: clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
@@ -17,7 +17,7 @@
   --text-lg: clamp(1.15rem, 1rem + 0.5vw, 1.35rem);
   --text-xl: clamp(1.5rem, 1.2rem + 1vw, 2rem);
   --text-2xl: clamp(2rem, 1.5rem + 2vw, 3.5rem);
-  --text-hero: clamp(2.8rem, 2rem + 3vw, 5.5rem);
+  --text-hero: clamp(3.2rem, 2.2rem + 4vw, 7rem);
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -75,8 +75,8 @@ body {
   line-height: var(--line-height-body);
   color: var(--color-text-primary);
   background:
-    radial-gradient(circle at top right, color-mix(in oklch, var(--color-accent-gold) 14%, transparent), transparent 28%),
-    radial-gradient(circle at left 12% top 20%, color-mix(in oklch, var(--color-accent-bio) 10%, transparent), transparent 36%),
+    radial-gradient(circle at top right, color-mix(in oklch, var(--color-accent-gold) 10%, transparent), transparent 40%),
+    radial-gradient(circle at left 12% top 20%, color-mix(in oklch, var(--color-accent-bio) 8%, transparent), transparent 40%),
     var(--color-bg);
   text-rendering: optimizeLegibility;
 }
@@ -103,7 +103,7 @@ h3 {
   font-family: "Instrument Serif", ui-serif, serif;
   line-height: var(--line-height-heading);
   letter-spacing: var(--tracking-heading);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 h1 {
@@ -316,8 +316,8 @@ p {
   inset: auto;
   pointer-events: none;
   border-radius: 999px;
-  filter: blur(80px);
-  opacity: 0.08;
+  filter: blur(120px);
+  opacity: 0.12;
 }
 
 .site-shell::before {
@@ -340,8 +340,8 @@ p {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(18px);
-  background: color-mix(in oklch, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(24px) saturate(1.2);
+  background: color-mix(in oklch, var(--color-bg) 80%, transparent);
   border-bottom: 1px solid color-mix(in oklch, var(--color-border) 60%, transparent);
 }
 
@@ -978,22 +978,23 @@ p {
 }
 
 .cta-button {
-  color: oklch(97% 0.015 90);
-  background: oklch(20% 0.02 60);
+  color: oklch(16% 0.01 60);
+  background: linear-gradient(135deg, oklch(80% 0.12 80), oklch(72% 0.10 75));
+  font-weight: 600;
 }
 
 .cta-button:hover,
 .cta-button:focus-visible {
-  filter: brightness(1.1);
   transform: translateY(-1px);
-  filter: brightness(1.3);
-  box-shadow: 0 4px 16px color-mix(in oklch, oklch(20% 0.02 60) 22%, transparent);
+  filter: brightness(1.15);
+  box-shadow: 0 4px 24px color-mix(in oklch, oklch(80% 0.12 80) 30%, transparent);
 }
 
 .secondary-link {
   border: 1px solid var(--color-border);
   color: var(--color-text-primary);
-  background: color-mix(in oklch, var(--color-bg-elevated) 70%, transparent);
+  background: color-mix(in oklch, var(--color-bg-elevated) 50%, transparent);
+  backdrop-filter: blur(8px);
 }
 
 .secondary-link:hover,
@@ -1007,13 +1008,16 @@ p {
 .difference-list article,
 .physician-frame {
   position: relative;
-  border: 1px solid var(--color-border);
+  border: 1px solid color-mix(in oklch, var(--color-accent-gold) 12%, var(--color-border));
   background: linear-gradient(
     180deg,
     var(--color-bg-surface),
     color-mix(in oklch, var(--color-bg-elevated) 60%, var(--color-bg-surface))
   );
-  box-shadow: 0 1px 3px color-mix(in oklch, oklch(20% 0.02 60) 6%, transparent);
+  box-shadow:
+    0 1px 3px color-mix(in oklch, oklch(5% 0 0) 20%, transparent),
+    inset 0 1px 0 color-mix(in oklch, oklch(100% 0 0) 3%, transparent);
+  backdrop-filter: blur(6px);
 }
 
 .code-card,
@@ -1082,8 +1086,8 @@ p {
 }
 
 .process-step-current {
-  border-color: color-mix(in oklch, var(--color-accent-silver) 26%, var(--color-border));
-  box-shadow: 0 4px 24px color-mix(in oklch, oklch(20% 0.02 60) 8%, transparent);
+  border-color: color-mix(in oklch, var(--color-accent-gold) 40%, var(--color-border));
+  box-shadow: 0 4px 24px color-mix(in oklch, oklch(5% 0 0) 20%, transparent), 0 0 0 1px color-mix(in oklch, var(--color-accent-gold) 12%, transparent);
 }
 
 .process-step-current .process-index {
@@ -1093,14 +1097,16 @@ p {
 .code-card:hover,
 .process-step:hover,
 .difference-list article:hover {
-  border-color: color-mix(in oklch, var(--color-accent-silver) 22%, var(--color-border));
+  border-color: color-mix(in oklch, var(--color-accent-gold) 30%, var(--color-border));
   transform: translate3d(0, -2px, 0);
-  box-shadow: 0 4px 24px color-mix(in oklch, oklch(20% 0.02 60) 8%, transparent);
+  box-shadow:
+    0 8px 32px color-mix(in oklch, oklch(5% 0 0) 30%, transparent),
+    0 0 0 1px color-mix(in oklch, var(--color-accent-gold) 8%, transparent);
 }
 
 .code-card-featured {
   min-height: 12rem;
-  border-top: 2px solid color-mix(in oklch, var(--color-accent-gold) 36%, var(--color-border));
+  border-top: 2px solid color-mix(in oklch, var(--color-accent-gold) 60%, var(--color-border));
 }
 
 .code-card-img {
@@ -1160,7 +1166,7 @@ p {
     color-mix(in oklch, var(--color-accent-gold) 54%, transparent) 38%,
     color-mix(in oklch, var(--color-accent-silver) 58%, transparent) 100%
   );
-  mix-blend-mode: multiply;
+  mix-blend-mode: screen;
   transform: translate3d(0, 0, 0) scaleX(0.84);
 }
 
@@ -1187,7 +1193,7 @@ p {
 }
 
 .physician-frame-accent {
-  border-top: 2px solid color-mix(in oklch, var(--color-accent-gold) 36%, var(--color-border));
+  border-top: 2px solid color-mix(in oklch, var(--color-accent-gold) 60%, var(--color-border));
   overflow: hidden;
 }
 
