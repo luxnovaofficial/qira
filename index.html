@@ -48,14 +48,14 @@
   </head>
   <body class="bg-bg font-sans text-text-primary">
     <!-- Password Gate -->
-    <div id="password-gate" style="position:fixed;inset:0;z-index:9999;background:oklch(16% 0.01 60);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;">
-      <p style="font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3.5rem);color:oklch(93% 0.015 80);letter-spacing:-0.02em;">QIRA</p>
-      <p style="font-size:0.85rem;color:oklch(55% 0.03 75);letter-spacing:0.05em;text-transform:uppercase;">Enter access code</p>
+    <div id="password-gate" style="position:fixed;inset:0;z-index:9999;background:oklch(97% 0.015 90);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;">
+      <p style="font-family:'Instrument Serif',serif;font-size:clamp(2rem,4vw,3.5rem);color:oklch(20% 0.02 60);letter-spacing:-0.02em;">QIRA</p>
+      <p style="font-size:0.85rem;color:oklch(52% 0.04 75);letter-spacing:0.05em;text-transform:uppercase;">Enter access code</p>
       <form id="gate-form" style="display:flex;gap:0.75rem;align-items:center;" onsubmit="return checkGate()">
-        <input id="gate-input" type="password" autocomplete="off" placeholder="••••••••" style="font-family:'JetBrains Mono',monospace;font-size:1rem;padding:0.7rem 1.2rem;border:1px solid oklch(27% 0.015 60);border-radius:6px;background:oklch(21% 0.012 65);color:oklch(93% 0.015 80);outline:none;width:200px;transition:border-color 0.2s;" onfocus="this.style.borderColor='oklch(80% 0.12 80)'" onblur="this.style.borderColor='oklch(27% 0.015 60)'" />
-        <button type="submit" style="font-family:'Instrument Sans',sans-serif;font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;background:linear-gradient(135deg,oklch(80% 0.12 80),oklch(72% 0.10 75));color:oklch(16% 0.01 60);border:none;border-radius:6px;cursor:pointer;letter-spacing:0.03em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Enter</button>
+        <input id="gate-input" type="password" autocomplete="off" placeholder="••••••••" style="font-family:'JetBrains Mono',monospace;font-size:1rem;padding:0.7rem 1.2rem;border:1px solid oklch(88% 0.01 60);border-radius:6px;background:oklch(99% 0.005 90);color:oklch(20% 0.02 60);outline:none;width:200px;transition:border-color 0.2s;" onfocus="this.style.borderColor='oklch(75% 0.08 80)'" onblur="this.style.borderColor='oklch(88% 0.01 60)'" />
+        <button type="submit" style="font-family:'Instrument Sans',sans-serif;font-size:0.85rem;font-weight:600;padding:0.7rem 1.5rem;background:oklch(20% 0.02 60);color:oklch(97% 0.015 90);border:none;border-radius:6px;cursor:pointer;letter-spacing:0.03em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Enter</button>
       </form>
-      <p id="gate-error" style="font-size:0.8rem;color:oklch(65% 0.18 25);opacity:0;transition:opacity 0.3s;">Incorrect code</p>
+      <p id="gate-error" style="font-size:0.8rem;color:oklch(55% 0.15 25);opacity:0;transition:opacity 0.3s;">Incorrect code</p>
     </div>
     <script>
       (function(){
